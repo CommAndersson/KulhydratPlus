@@ -157,6 +157,13 @@
 			path = "Fællesskabets billedkort";
 			sourceTree = "<group>";
 		};
+		CE2924012B811391009132DD /* test */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
 		CEA8266A2B17C46600C13087 /* Profil */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +287,7 @@
 		CEF608E12B03DD0100191813 /* Forsideelementer */ = {
 			isa = PBXGroup;
 			children = (
+				CE2924012B811391009132DD /* test */,
 				CE0409C92B7CE0E80075E956 /* Fællesskabets billedkort */,
 				CEA8F2F52B6D367700765C53 /* Mine Billedkort */,
 				CEA8266A2B17C46600C13087 /* Profil */,
