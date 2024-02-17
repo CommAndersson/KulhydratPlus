@@ -197,3 +197,8 @@ class FlashcardCreationManager: ObservableObject {
         newMængde = ""
     }
 }
+
+
+
+
+//Tester Tester
