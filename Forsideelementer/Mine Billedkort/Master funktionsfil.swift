@@ -128,8 +128,8 @@ class FlashcardManager: ObservableObject {
     func updateCard(in deck: Deck, cardID: UUID, newNavn: String?, newKulhydrat: Double?, newMåleenhed: String?, newMængde: Double?, newAktivMængde: Double?) {
         if let deckIndex = decks.firstIndex(where: { $0.id == deck.id }),
            let cardIndex = decks[deckIndex].cards.firstIndex(where: { $0.id == cardID }) {
-
-            // Update properties if new values are provided
+            
+            // Directly update the properties of the card in the array
             if let navn = newNavn {
                 decks[deckIndex].cards[cardIndex].navn = navn
             }
@@ -145,13 +145,14 @@ class FlashcardManager: ObservableObject {
             if let aktivMængde = newAktivMængde {
                 decks[deckIndex].cards[cardIndex].aktivMængde = aktivMængde
             }
+
             saveDecks() // Save decks after updating a card
             print("Card updated in deck '\(deck.name)': \(decks[deckIndex].cards[cardIndex])")
         } else {
             print("Error: Deck or Card not found")
         }
     }
-   
+
 
 
     func addDeck(name: String) {
@@ -197,8 +198,3 @@ class FlashcardCreationManager: ObservableObject {
         newMængde = ""
     }
 }
-
-
-
-
-//Tester Tester

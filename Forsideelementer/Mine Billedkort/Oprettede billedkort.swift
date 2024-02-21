@@ -18,6 +18,13 @@ extension Formatter {
 
 struct FlashcardDetailView: View {
     
+    var calculatedTotalBilledkortKulhydrat: Double  {
+            let billedkortKulhydratPr100Gram = flashcard.kulhydrat / flashcard.mængde * 100
+            return billedkortKulhydratPr100Gram * mængdeværdiIndsatIndeIFlashcard / 100
+        }
+    
+
+   
     @Environment(\.dismiss) private var dismiss
     
     var flashcard: Flashcard
@@ -37,7 +44,7 @@ struct FlashcardDetailView: View {
     @State private var totalBilledkortKulhydratAfrundetDouble = 0.0
     
     var formattedLucNumber: String {
-        Formatter.lucNumberFormatBilledkort.string(from: NSNumber(value: Double(totalBilledkortKulhydratAfrundetDouble)))!
+        Formatter.lucNumberFormatBilledkort.string(from: NSNumber(value: Double(calculatedTotalBilledkortKulhydrat)))!
     }
 
     // Initialize newKulhydratDouble with a default value
@@ -133,6 +140,7 @@ struct FlashcardDetailView: View {
                                 
                                 
                                 TextField("Mængde", value: $mængdeværdiIndsatIndeIFlashcard, formatter: Formatter.lucNumberFormatBilledkort)
+                                    .keyboardType(.numberPad)
                                     .font(.title3)
                                     .frame(width: 120, height: 80)
                                     .clipped()
@@ -161,22 +169,22 @@ struct FlashcardDetailView: View {
                             
                             
                             
-                             let billedkortKulhydratPr100Gram = Double(flashcard.kulhydrat) / Double(flashcard.mængde)
-                             let totalBilledkortKulhydrat = billedkortKulhydratPr100Gram * Double(mængdeværdiIndsatIndeIFlashcard)
-                             let totalBilledkortKulhydratAfrundet = String (format: "%.0f", totalBilledkortKulhydrat.rounded(.toNearestOrAwayFromZero))
+                           /* let billedkortKulhydratPr100Gram = Double(flashcard.kulhydrat) / Double(flashcard.mængde)
+                            let totalBilledkortKulhydrat = billedkortKulhydratPr100Gram * Double(mængdeværdiIndsatIndeIFlashcard)
+                            let totalBilledkortKulhydratAfrundet = String (format: "%.0f", totalBilledkortKulhydrat.rounded(.toNearestOrAwayFromZero))
                             
-                             let totalBilledkortKulhydratAfrundetDouble = Double(totalBilledkortKulhydratAfrundet) ?? 0
+                            var totalBilledkortKulhydratAfrundetDouble = Double(totalBilledkortKulhydratAfrundet) ?? 0 */
                             
-                            switch totalBilledkortKulhydratAfrundetDouble {
-                            case _ where totalBilledkortKulhydratAfrundetDouble > 1.0:
-                                Text("\(totalBilledkortKulhydratAfrundet) gram")
+                            switch calculatedTotalBilledkortKulhydrat {
+                            case _ where calculatedTotalBilledkortKulhydrat > 1.0:
+                                Text(String(format: "%.0f Gram", calculatedTotalBilledkortKulhydrat))
                                     .bold()
                                     .font(.system(size: 20))
                                     .padding(.leading, 0)
                                     .padding(.bottom, 50)
                                     .padding(.top, -10)
-                            case _ where totalBilledkortKulhydratAfrundetDouble < 1.0:
-                                Text("0 gram")
+                            case _ where calculatedTotalBilledkortKulhydrat < 1.0:
+                                Text("0 Gram")
                                     .bold()
                                     .font(.system(size: 20))
                                     .padding(.leading, 0)
@@ -189,6 +197,8 @@ struct FlashcardDetailView: View {
                                     .padding(.leading, 0)
                                     .padding(.bottom, 50)
                                     .padding(.top, -10)
+                                
+                                
                             }
                             
                                 

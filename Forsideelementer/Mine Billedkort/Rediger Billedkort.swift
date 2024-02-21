@@ -8,31 +8,35 @@
 import SwiftUI
 
 struct RedigerKort: View {
-    
     var flashcard: Flashcard
-    
     @Environment(\.dismiss) private var dismiss
-    
     @StateObject var flashcardManager: FlashcardManager
     @Binding var selectedDeck: Deck?
     @ObservedObject var deck: Deck
-    
-    
+
     @State private var redigeretNavn = ""
     @State private var redigeretKulhydrat = ""
     @State private var redigeretMåleenhed = "Gram"
     @State private var redigeretMængde = ""
     let muligeMåleenheder = ["Gram", "mL", "Antal"]
     @State private var mængdeværdiIndsatIndeIFlashcard = 0.0
-    
-    @State private var kulhydratDouble: Double = 0.0
-    @State private var mængdeDouble: Double = 0.0
-    @State private var totalBilledkortKulhydratAfrundet: String = "0 Gram"
-    
+
+    // Computed property to dynamically calculate total carbohydrates
+    var calculatedTotalBilledkortKulhydrat: Double {
+        guard let redigeretKulhydratDouble = Double(redigeretKulhydrat),
+              let redigeretMængdeDouble = Double(redigeretMængde),
+              redigeretMængdeDouble > 0 else {
+            return 0.0
+        }
+
+        let billedkortKulhydratPr100Gram = redigeretKulhydratDouble / redigeretMængdeDouble * 100
+        let totalKulhydrat = billedkortKulhydratPr100Gram * mængdeværdiIndsatIndeIFlashcard / 100
+        return totalKulhydrat
+    }
+
     var body: some View {
-        Text("Rediger Kort")
         List {
-            Section(header: Text("Tilføj Billedkort")) {
+            Section(header: Text("Rediger Billedkort")) {
                 TextField("Navn", text: $redigeretNavn)
                 Picker("Måleenhed", selection: $redigeretMåleenhed) {
                     ForEach(muligeMåleenheder, id: \.self) { måleenhed in
@@ -44,96 +48,75 @@ struct RedigerKort: View {
                     .keyboardType(.decimalPad)
                 TextField("Kulhydrater i fødevaren i gram (fx. 50)", text: $redigeretKulhydrat)
                     .keyboardType(.decimalPad)
-                
-                // Calculate the totalBilledkortKulhydratAfrundet here
-                let billedkortKulhydratPr100Gram = Double(flashcard.kulhydrat) / Double(flashcard.mængde)
-                let totalBilledkortKulhydrat = billedkortKulhydratPr100Gram * Double(mængdeværdiIndsatIndeIFlashcard)
-                let totalBilledkortKulhydratAfrundet = String(format: "%.0f", totalBilledkortKulhydrat.rounded(.toNearestOrAwayFromZero))
-                
-                switch totalBilledkortKulhydrat {
-                case _ where totalBilledkortKulhydrat > 1.0:
-                    Text("\(totalBilledkortKulhydratAfrundet) gram")
-                        .bold()
-                        .font(.system(size: 20))
-                        .padding(.leading, 0)
-                        .padding(.bottom, 50)
-                        .padding(.top, -10)
-                case _ where totalBilledkortKulhydrat < 1.0:
-                    Text("0 gram")
-                        .bold()
-                        .font(.system(size: 20))
-                        .padding(.leading, 0)
-                        .padding(.bottom, 50)
-                        .padding(.top, -10)
-                default:
-                    Text("0 Gram")
-                }
+
+                // Display the calculated total carbohydrates
+                Text("Total Kulhydrater: \(calculatedTotalBilledkortKulhydrat, specifier: "%.0f") Gram")
+                    .bold()
+                    .font(.system(size: 20))
             }
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {
-                    // Check if redigeretNavn is not empty and is different from the current value
-                    if !redigeretNavn.isEmpty, redigeretNavn != flashcard.navn {
-                        // Update the flashcard with the edited values
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Done") {
+                    // Convert the edited kulhydrat and mængde from String to Double
+                    if let redigeretKulhydratDouble = Double(redigeretKulhydrat), let redigeretMængdeDouble = Double(redigeretMængde) {
+                        // Call updateCard to update the flashcard with new values
                         flashcardManager.updateCard(
                             in: deck,
                             cardID: flashcard.id,
-                            newNavn: redigeretNavn,
-                            newKulhydrat: flashcard.kulhydrat,
-                            newMåleenhed: flashcard.måleenhed,
-                            newMængde: flashcard.mængde,
-                            newAktivMængde: mængdeDouble
+                            newNavn: redigeretNavn.isEmpty ? nil : redigeretNavn, // Use nil if no change to preserve existing value
+                            newKulhydrat: redigeretKulhydratDouble,
+                            newMåleenhed: redigeretMåleenhed,
+                            newMængde: redigeretMængdeDouble,
+                            newAktivMængde: mængdeværdiIndsatIndeIFlashcard // Assuming this is the value you want to update, adjust as necessary
                         )
-                        // Recalculate values here
-                        let billedkortKulhydratPr100Gram = Double(flashcard.kulhydrat) / Double(flashcard.mængde)
-                        let totalBilledkortKulhydrat = billedkortKulhydratPr100Gram * Double(mængdeværdiIndsatIndeIFlashcard)
-                        let totalBilledkortKulhydratAfrundetDouble = Double(totalBilledkortKulhydratAfrundet) ?? 0
-                        // Update the UI or perform any actions with the recalculated values
                     }
-                    // Repeat similar checks and updates for other fields
-                    else if let redigeretKulhydrat = Double(redigeretKulhydrat), redigeretKulhydrat != flashcard.kulhydrat {
-                        flashcardManager.updateCard(
-                            in: deck,
-                            cardID: flashcard.id,
-                            newNavn: flashcard.navn,
-                            newKulhydrat: redigeretKulhydrat,
-                            newMåleenhed: flashcard.måleenhed,
-                            newMængde: flashcard.mængde,
-                            newAktivMængde: mængdeDouble
-                        )
-                        // Recalculate values here
-                        let billedkortKulhydratPr100Gram = Double(flashcard.kulhydrat) / Double(flashcard.mængde)
-                        let totalBilledkortKulhydrat = billedkortKulhydratPr100Gram * Double(mængdeværdiIndsatIndeIFlashcard)
-                        let totalBilledkortKulhydratAfrundetDouble = Double(totalBilledkortKulhydratAfrundet) ?? 0
-                        // Update the UI or perform any actions with the recalculated values
-                    }
-                    // Repeat for other conditions
-                    else {
-                        // Update only mængdeDouble if none of the above conditions are met
-                        flashcardManager.updateCard(
-                            in: deck,
-                            cardID: flashcard.id,
-                            newNavn: flashcard.navn,
-                            newKulhydrat: flashcard.kulhydrat,
-                            newMåleenhed: flashcard.måleenhed,
-                            newMængde: flashcard.mængde,
-                            newAktivMængde: mængdeDouble
-                        )
-                        // Recalculate values here
-                        let billedkortKulhydratPr100Gram = Double(flashcard.kulhydrat) / Double(flashcard.mængde)
-                        let totalBilledkortKulhydrat = billedkortKulhydratPr100Gram * Double(mængdeværdiIndsatIndeIFlashcard)
-                        let totalBilledkortKulhydratAfrundetDouble = Double(totalBilledkortKulhydratAfrundet) ?? 0
-                        // Update the UI or perform any actions with the recalculated values
-                    }
+
+                    // Dismiss the view after updating
                     dismiss()
-                }) {
-                    HStack {
-                        Text("Done")
-                    }
                 }
             }
         }
     }
 }
+
+                    /* // Repeat similar checks and updates for other fields
+                     else if let redigeretKulhydrat = Double(redigeretKulhydrat), redigeretKulhydrat != flashcard.kulhydrat {
+                     flashcardManager.updateCard(
+                     in: deck,
+                     cardID: flashcard.id,
+                     newNavn: flashcard.navn,
+                     newKulhydrat: redigeretKulhydrat,
+                     newMåleenhed: flashcard.måleenhed,
+                     newMængde: flashcard.mængde,
+                     newAktivMængde: mængdeDouble
+                     )
+                     
+                     }
+                     // Repeat for other conditions
+                     else {
+                     // Update only mængdeDouble if none of the above conditions are met
+                     flashcardManager.updateCard(
+                     in: deck,
+                     cardID: flashcard.id,
+                     newNavn: flashcard.navn,
+                     newKulhydrat: flashcard.kulhydrat,
+                     newMåleenhed: flashcard.måleenhed,
+                     newMængde: flashcard.mængde,
+                     newAktivMængde: mængdeDouble
+                     )
+                     
+                     }
+                     dismiss()
+                     }) {
+                     HStack {
+                     Text("Done")
+                     }
+                     }
+                     }
+                     }
+                     }
+                     }
+                     */
+                
