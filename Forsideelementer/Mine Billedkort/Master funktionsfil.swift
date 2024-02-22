@@ -33,6 +33,12 @@ class Deck: Identifiable, ObservableObject, Equatable, Hashable, Codable {
             name = try container.decode(String.self, forKey: .name)
             cards = try container.decode([Flashcard].self, forKey: .cards)
         }
+    
+    init() {
+            self.name = "Default Deck Name" // Provide a default name
+            self.cards = [] // Initialize cards as empty
+        }
+    
         
         func encode(to encoder: Encoder) throws {
             var container = encoder.container(keyedBy: CodingKeys.self)
@@ -58,6 +64,7 @@ class Deck: Identifiable, ObservableObject, Equatable, Hashable, Codable {
     func removeCard(at index: Int) {
           cards.remove(at: index)
       }
+    
   }
     
 // Det kan godt være at hele denne class skal slettes men jeg tror den er nødvendig for at jeg kan lave et NavigaitonLink til hvert enkelt brugerdefineret billedkort

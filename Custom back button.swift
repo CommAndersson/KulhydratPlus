@@ -8,16 +8,14 @@
 import SwiftUI
 
 
-@main
-struct customBackButton: App {
+struct CustomBackButtonApp: App {
     var body: some Scene {
-        WindowGroup{
+        WindowGroup {
             ContentView()
-                .onAppear{
+                .onAppear {
                     UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "arrow.backward")
                     UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward")
                 }
         }
     }
 }
-

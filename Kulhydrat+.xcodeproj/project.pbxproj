@@ -28,6 +28,13 @@
 		CE0359332B125F5700B892F5 /* Vindruer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0359322B125F5700B892F5 /* Vindruer.swift */; };
 		CE0359352B125F6400B892F5 /* Æble.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0359342B125F6400B892F5 /* Æble.swift */; };
 		CE0409C82B7CDA980075E956 /* Rediger Billedkort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0409C72B7CDA980075E956 /* Rediger Billedkort.swift */; };
+		CE21163F2B878C3300D8B3CE /* Start Nyt Måltid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21163E2B878C3300D8B3CE /* Start Nyt Måltid.swift */; };
+		CE2116412B878C4400D8B3CE /* Tidligere Måltider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2116402B878C4400D8B3CE /* Tidligere Måltider.swift */; };
+		CE2116432B87B83B00D8B3CE /* Vælg Kategori Mine Kort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2116422B87B83B00D8B3CE /* Vælg Kategori Mine Kort.swift */; };
+		CE2116472B87B95100D8B3CE /* Vælg Overblik.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2116462B87B95100D8B3CE /* Vælg Overblik.swift */; };
+		CE2116492B87C10D00D8B3CE /* Vælg Fødevarer Mine Kort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2116482B87C10D00D8B3CE /* Vælg Fødevarer Mine Kort.swift */; };
+		CE21164B2B87CB8B00D8B3CE /* IndtastMængde Mine Kort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21164A2B87CB8B00D8B3CE /* IndtastMængde Mine Kort.swift */; };
+		CE21164D2B87D5F200D8B3CE /* Funktionsfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21164C2B87D5F200D8B3CE /* Funktionsfil.swift */; };
 		CEA826692B17C02900C13087 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA826682B17C02900C13087 /* LoadingView.swift */; };
 		CEA8266C2B17C4D200C13087 /* Profil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8266B2B17C4D200C13087 /* Profil.swift */; };
 		CEA8F2F72B6D368900765C53 /* Tilføj Ny Kategori.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8F2F62B6D368900765C53 /* Tilføj Ny Kategori.swift */; };
@@ -94,6 +101,13 @@
 		CE0359322B125F5700B892F5 /* Vindruer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vindruer.swift; sourceTree = "<group>"; };
 		CE0359342B125F6400B892F5 /* Æble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Æble.swift"; sourceTree = "<group>"; };
 		CE0409C72B7CDA980075E956 /* Rediger Billedkort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rediger Billedkort.swift"; sourceTree = "<group>"; };
+		CE21163E2B878C3300D8B3CE /* Start Nyt Måltid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Nyt Måltid.swift"; sourceTree = "<group>"; };
+		CE2116402B878C4400D8B3CE /* Tidligere Måltider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tidligere Måltider.swift"; sourceTree = "<group>"; };
+		CE2116422B87B83B00D8B3CE /* Vælg Kategori Mine Kort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vælg Kategori Mine Kort.swift"; sourceTree = "<group>"; };
+		CE2116462B87B95100D8B3CE /* Vælg Overblik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vælg Overblik.swift"; sourceTree = "<group>"; };
+		CE2116482B87C10D00D8B3CE /* Vælg Fødevarer Mine Kort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vælg Fødevarer Mine Kort.swift"; sourceTree = "<group>"; };
+		CE21164A2B87CB8B00D8B3CE /* IndtastMængde Mine Kort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndtastMængde Mine Kort.swift"; sourceTree = "<group>"; };
+		CE21164C2B87D5F200D8B3CE /* Funktionsfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funktionsfil.swift; sourceTree = "<group>"; };
 		CEA826682B17C02900C13087 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CEA8266B2B17C4D200C13087 /* Profil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profil.swift; sourceTree = "<group>"; };
 		CEA8F2F62B6D368900765C53 /* Tilføj Ny Kategori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tilføj Ny Kategori.swift"; sourceTree = "<group>"; };
@@ -157,11 +171,19 @@
 			path = "Fællesskabets billedkort";
 			sourceTree = "<group>";
 		};
-		CE2924012B811391009132DD /* test */ = {
+		CE21163D2B878C1E00D8B3CE /* Start Nyt Måltid */ = {
 			isa = PBXGroup;
 			children = (
+				CE21163E2B878C3300D8B3CE /* Start Nyt Måltid.swift */,
+				CE2116402B878C4400D8B3CE /* Tidligere Måltider.swift */,
+				CE2116422B87B83B00D8B3CE /* Vælg Kategori Mine Kort.swift */,
+				CE2116462B87B95100D8B3CE /* Vælg Overblik.swift */,
+				CE2116482B87C10D00D8B3CE /* Vælg Fødevarer Mine Kort.swift */,
+				CE21164A2B87CB8B00D8B3CE /* IndtastMængde Mine Kort.swift */,
+				CE21164C2B87D5F200D8B3CE /* Funktionsfil.swift */,
 			);
-			path = test;
+			name = "Start Nyt Måltid";
+			path = "Start Nyt Måltid";
 			sourceTree = "<group>";
 		};
 		CEA8266A2B17C46600C13087 /* Profil */ = {
@@ -287,7 +309,7 @@
 		CEF608E12B03DD0100191813 /* Forsideelementer */ = {
 			isa = PBXGroup;
 			children = (
-				CE2924012B811391009132DD /* test */,
+				CE21163D2B878C1E00D8B3CE /* Start Nyt Måltid */,
 				CE0409C92B7CE0E80075E956 /* Fællesskabets billedkort */,
 				CEA8F2F52B6D367700765C53 /* Mine Billedkort */,
 				CEA8266A2B17C46600C13087 /* Profil */,
@@ -495,6 +517,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE03592F2B125F2400B892F5 /* Pære.swift in Sources */,
+				CE2116472B87B95100D8B3CE /* Vælg Overblik.swift in Sources */,
 				CE0359132B125CD700B892F5 /* Cantaloupe melon.swift in Sources */,
 				CED42C3C2B17A42400B00493 /* User.swift in Sources */,
 				CE03591F2B125E2D00B892F5 /* Jordbær.swift in Sources */,
@@ -503,8 +526,10 @@
 				CEF608ED2B03DFC900191813 /* Bulgur.swift in Sources */,
 				CEF6090E2B0D1E7200191813 /* Ananas.swift in Sources */,
 				CE0359352B125F6400B892F5 /* Æble.swift in Sources */,
+				CE2116412B878C4400D8B3CE /* Tidligere Måltider.swift in Sources */,
 				CEA8F3012B73E5A900765C53 /* Oprettede billedkort.swift in Sources */,
 				CEA8F2F72B6D368900765C53 /* Tilføj Ny Kategori.swift in Sources */,
+				CE2116492B87C10D00D8B3CE /* Vælg Fødevarer Mine Kort.swift in Sources */,
 				CEF608D82B03D9DA00191813 /* Cheeseburger.swift in Sources */,
 				CE0359292B125EF200B892F5 /* Mango.swift in Sources */,
 				CED42C332B1785D800B00493 /* LoginView.swift in Sources */,
@@ -518,6 +543,7 @@
 				CEF608D12B03D7FA00191813 /* Fast Food.swift in Sources */,
 				CEF608F32B03E05900191813 /* Hummus.swift in Sources */,
 				CE0359232B125E4A00B892F5 /* Kiwi.swift in Sources */,
+				CE2116432B87B83B00D8B3CE /* Vælg Kategori Mine Kort.swift in Sources */,
 				CEF608A72AFE54A300191813 /* ContentView.swift in Sources */,
 				CE03591D2B125E1200B892F5 /* Honningmelon.swift in Sources */,
 				CE0359152B125CE500B892F5 /* Dadler.swift in Sources */,
@@ -532,8 +558,10 @@
 				CEA8F3032B73E6D100765C53 /* Master funktionsfil.swift in Sources */,
 				CE0359332B125F5700B892F5 /* Vindruer.swift in Sources */,
 				CEF6090C2B0D1E6700191813 /* Abrikos.swift in Sources */,
+				CE21163F2B878C3300D8B3CE /* Start Nyt Måltid.swift in Sources */,
 				CEF608FC2B03E0BB00191813 /* Quinoa.swift in Sources */,
 				CEF608EF2B03DFF700191813 /* Røde Kidneybønner.swift in Sources */,
+				CE21164B2B87CB8B00D8B3CE /* IndtastMængde Mine Kort.swift in Sources */,
 				CE03590F2B125CA600B892F5 /* Blåbær.swift in Sources */,
 				CEF608CF2B02BA1000191813 /* McDonalds.swift in Sources */,
 				CEA8F3072B76524C00765C53 /* Custom back button.swift in Sources */,
@@ -544,6 +572,7 @@
 				CE0359192B125DEC00B892F5 /* Granatæble.swift in Sources */,
 				CEA8266C2B17C4D200C13087 /* Profil.swift in Sources */,
 				CE0409C82B7CDA980075E956 /* Rediger Billedkort.swift in Sources */,
+				CE21164D2B87D5F200D8B3CE /* Funktionsfil.swift in Sources */,
 				CE0359312B125F3800B892F5 /* Vandmelon.swift in Sources */,
 				CE0359272B125EDA00B892F5 /* Kokosnød.swift in Sources */,
 				CEF608F92B03E09E00191813 /* Perlespelt.swift in Sources */,

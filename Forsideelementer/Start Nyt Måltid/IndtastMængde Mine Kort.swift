@@ -1,22 +1,17 @@
 //
-//  Oprettede billedkort.swift
+//  IndtastMængde Mine Kort.swift
 //  Kulhydrat+
 //
-//  Created by Sigurd Andersson on 07/02/2024.
+//  Created by Sigurd Andersson on 22/02/2024.
 //
 
 import SwiftUI
 
-extension Formatter {
-    static let lucNumberFormatBilledkort: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .none
-        formatter.zeroSymbol  = ""     // Show empty string instead of zero
-        return formatter
-    }()
-}
 
-struct FlashcardDetailView: View {
+
+struct IndtastMængdeMineKort: View {
+    
+    @EnvironmentObject var mealViewModel: MealViewModel
     
     @State private var mængdeværdiIndsatIndeIFlashcardString = ""
     
@@ -229,25 +224,10 @@ struct FlashcardDetailView: View {
                 .padding(.bottom, 320)
                 
             }
+            
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                ForEach(deck.cards) { card in
-                    NavigationLink(
-                        destination: RedigerKort(
-                            flashcard: card,
-                            flashcardManager: flashcardManager,
-                            selectedDeck: $selectedDeck,
-                            deck: deck
-                            
-                        )
-                    ) {
-                        Text("Edit")
-                    }
-                }
-            }
-            
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
                     dismiss()
@@ -256,6 +236,13 @@ struct FlashcardDetailView: View {
                         Image(systemName: "arrow.backward")
                         //Text("Back")
                     }
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing){
+                Button(action: {
+                    mealViewModel.addMealItem(flashcard: flashcard, amount: mængdeværdiIndsatIndeIFlashcard, carbs: calculatedTotalBilledkortKulhydrat)
+                }) {
+                    Text("Tilføj")
                 }
             }
         }

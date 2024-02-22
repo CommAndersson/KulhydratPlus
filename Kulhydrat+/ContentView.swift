@@ -9,6 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     @AppStorage("log_status") var logStatus: Bool = false
+
+    @StateObject var flashcardManager = FlashcardManager() // Assuming FlashcardManager is correctly initialized
+    @State var selectedDeck: Deck? = nil // This is fine as is
+    @StateObject var deck = Deck() // Now works with the new parameterless init()
+    
     var body: some View {
         if logStatus{
             Text("")
@@ -140,7 +145,7 @@ struct ContentView: View {
                     .contentShape(Rectangle())
                     
                     
-                    NavigationLink(destination: MineKort(), label:{
+                    NavigationLink(destination: LoginSide(), label:{
                         
                         ZStack{
                             Text("Login")
@@ -180,29 +185,53 @@ struct ContentView: View {
                     .cornerRadius(10)
                     .padding(.bottom, 20)
                     .contentShape(Rectangle())
+                    
+                    
+                    NavigationLink(destination: StartNytMåltid(flashcardManager: flashcardManager, selectedDeck: $selectedDeck, deck: deck)) {
+                        
+                        ZStack{
+                            Text("Start Nyt Måltid")
+                                .foregroundColor(.black)
+                                .font(.system(size: 20))
+                                .padding(.bottom, 2)
+                            
+                            Rectangle()
+                                .frame(width: 300, height: 50)
+                                .foregroundColor(.black.opacity(0))
+                            
+                        }
+                    }
+                    .frame(width: 300, height: 50)
+                    .background(Color("BlåTilKnapper"))
+                    .cornerRadius(10)
+                    .padding(.bottom, 20)
+                    .contentShape(Rectangle())
                 }
             }
             
             
-            NavigationLink(destination: Profil(), label:{
-                
-                ZStack{
-                    Text("Min Profil")
-                        .foregroundColor(.black)
-                        .font(.system(size: 20))
-                        .padding(.bottom, 2)
-                    
-                    Rectangle()
-                        .frame(width: 300, height: 50)
-                        .foregroundColor(.black.opacity(0))
-                    
-                }
-            })
-            .frame(width: 300, height: 50)
-            .background(Color("BlåTilKnapper"))
-            .cornerRadius(10)
-            .padding(.bottom, 20)
-            .contentShape(Rectangle())
+            /*  NavigationLink(destination: Profil(), label:{
+             
+             ZStack{
+             Text("Min Profil")
+             .foregroundColor(.black)
+             .font(.system(size: 20))
+             .padding(.bottom, 2)
+             
+             Rectangle()
+             .frame(width: 300, height: 50)
+             .foregroundColor(.black.opacity(0))
+             
+             }
+             })
+             .frame(width: 300, height: 50)
+             .background(Color("BlåTilKnapper"))
+             .cornerRadius(10)
+             .padding(.bottom, 20)
+             .contentShape(Rectangle())
+             */
+            
+            
             
             
             
@@ -220,12 +249,16 @@ struct ContentView: View {
     
     
     
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
-    }
+    /* struct ContentView_Previews: PreviewProvider {
+     @State var flashcardManager: FlashcardManager
+     @Binding var selectedDeck: Deck?
+     @ObservedObject var deck: Deck
+     
+     static var previews: some View {
+     ContentView(flashcardManager: FlashcardManager(), selectedDeck: .constant(nil), deck: Deck())
+     }
+     }
+     }*/
+    
 }
-
-
 

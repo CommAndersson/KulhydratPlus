@@ -49,10 +49,7 @@ struct RedigerKort: View {
                 TextField("Kulhydrater i fødevaren i gram (fx. 50)", text: $redigeretKulhydrat)
                     .keyboardType(.decimalPad)
 
-                // Display the calculated total carbohydrates
-                Text("Total Kulhydrater: \(calculatedTotalBilledkortKulhydrat, specifier: "%.0f") Gram")
-                    .bold()
-                    .font(.system(size: 20))
+            
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -81,42 +78,4 @@ struct RedigerKort: View {
     }
 }
 
-                    /* // Repeat similar checks and updates for other fields
-                     else if let redigeretKulhydrat = Double(redigeretKulhydrat), redigeretKulhydrat != flashcard.kulhydrat {
-                     flashcardManager.updateCard(
-                     in: deck,
-                     cardID: flashcard.id,
-                     newNavn: flashcard.navn,
-                     newKulhydrat: redigeretKulhydrat,
-                     newMåleenhed: flashcard.måleenhed,
-                     newMængde: flashcard.mængde,
-                     newAktivMængde: mængdeDouble
-                     )
-                     
-                     }
-                     // Repeat for other conditions
-                     else {
-                     // Update only mængdeDouble if none of the above conditions are met
-                     flashcardManager.updateCard(
-                     in: deck,
-                     cardID: flashcard.id,
-                     newNavn: flashcard.navn,
-                     newKulhydrat: flashcard.kulhydrat,
-                     newMåleenhed: flashcard.måleenhed,
-                     newMængde: flashcard.mængde,
-                     newAktivMængde: mængdeDouble
-                     )
-                     
-                     }
-                     dismiss()
-                     }) {
-                     HStack {
-                     Text("Done")
-                     }
-                     }
-                     }
-                     }
-                     }
-                     }
-                     */
-                
+                    
