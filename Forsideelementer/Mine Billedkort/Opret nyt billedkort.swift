@@ -8,6 +8,9 @@ import SwiftUI
 
 struct OpretNytKort: View {
     
+    @State private var showingAlert = false
+    @State private var alertMessage = ""
+    
     @Environment(\.dismiss) private var dismiss
 
     @State var flashcardManager: FlashcardManager
@@ -40,14 +43,27 @@ struct OpretNytKort: View {
                 TextField("Kulhydrater i fødevaren i gram (fx. 50)", text: $newKulhydrat)
                     .keyboardType(.decimalPad)
                 Button("Add Flashcard") {
-                    mængdeDouble = Double(newMængde) ?? 0.0 // Provide a default value if conversion fails
-                    kulhydratDouble = Double(newKulhydrat) ?? 0.0
-                    flashcardManager.addCard(to: deck, navn: newNavn, kulhydrat: kulhydratDouble, måleenhed: newMåleenhed, mængde: mængdeDouble, aktivMængde: mængdeværdiIndsatIndeIFlashcard)
-                    newNavn = ""
-                    newKulhydrat = ""
-                    newMåleenhed = ""
-                    newMængde = ""
+                    guard !newNavn.isEmpty else {
+                        alertMessage = "Giv venligst kortet et navn."
+                        showingAlert = true
+                        return
+                    }
 
+                    if deck.cards.contains(where: { $0.navn == newNavn }) {
+                        alertMessage = "Et kort med navnet '\(newNavn)' findes allerede i denne kategori."
+                        showingAlert = true
+                    } else {
+                        // Assuming `addCard` method correctly adds a flashcard to the deck
+                        flashcardManager.addCard(to: deck, navn: newNavn, kulhydrat: kulhydratDouble, måleenhed: newMåleenhed, mængde: mængdeDouble, aktivMængde: mængdeværdiIndsatIndeIFlashcard)
+                        // Reset the fields after adding
+                        newNavn = ""
+                        newKulhydrat = ""
+                        newMåleenhed = "Gram" // Reset to default value if needed
+                        newMængde = ""
+                    }
+                }
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                 }
             }
             

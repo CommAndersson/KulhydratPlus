@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct MineKort: View {
+    @State private var showingAlert = false
+    @State private var alertMessage = ""
+    
+    
     
     @Environment(\.dismiss) private var dismiss
     
@@ -49,8 +53,13 @@ struct MineKort: View {
                                     }
                                     ZStack{
                                         Button("Gem") {
-                                            flashcardManager.addDeck(name: newDeckName)
-                                            newDeckName = ""
+                                            if flashcardManager.decks.contains(where: { $0.name == newDeckName }) {
+                                                    alertMessage = "En kategori med navnet '\(newDeckName)' findes allerede."
+                                                    showingAlert = true
+                                                } else {
+                                                    flashcardManager.addDeck(name: newDeckName)
+                                                    newDeckName = ""
+                                                }
                                         }
                                         .font(.system(size: 20))
                                         .frame(width: 300, height: 50)
@@ -58,6 +67,11 @@ struct MineKort: View {
                                         .cornerRadius(10)
                                         .padding(.bottom, 20)
                                         .contentShape(Rectangle())
+                                        .alert(isPresented: $showingAlert) {
+                                            Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                                        }
+                                       
+                                        
                                         
                                         
                                         RoundedRectangle(cornerRadius: 10)

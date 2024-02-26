@@ -25,8 +25,16 @@ struct FlashcardDetailView: View {
         if mængdeværdiIndsatIndeIFlashcard == 0 {
             return 0
         } else {
-            let billedkortKulhydratPr100Gram = flashcard.kulhydrat / flashcard.mængde * 100
-            return billedkortKulhydratPr100Gram * mængdeværdiIndsatIndeIFlashcard / 100
+            switch newMåleenhed {
+            case "Antal":
+                // Assuming 1 'Antal' equals the full 'mængde' of the item
+                return flashcard.kulhydrat * Double(mængdeværdiIndsatIndeIFlashcard) / flashcard.mængde
+            case "Gram", "mL":
+                let billedkortKulhydratPr100Gram = flashcard.kulhydrat / flashcard.mængde * 100
+                return billedkortKulhydratPr100Gram * mængdeværdiIndsatIndeIFlashcard / 100
+            default:
+                return 0
+            }
         }
     }
     

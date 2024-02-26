@@ -16,15 +16,26 @@ struct IndtastMængdeMineKort: View {
     @State private var mængdeværdiIndsatIndeIFlashcardString = ""
     
     var calculatedTotalBilledkortKulhydrat: Double {
-        // Check if the input value is 0 or not set
-        if mængdeværdiIndsatIndeIFlashcard == 0 {
+        guard mængdeværdiIndsatIndeIFlashcard > 0 else {
             return 0
-        } else {
-            let billedkortKulhydratPr100Gram = flashcard.kulhydrat / flashcard.mængde * 100
-            return billedkortKulhydratPr100Gram * mængdeværdiIndsatIndeIFlashcard / 100
+        }
+        
+        switch flashcard.måleenhed {
+        case "Antal":
+            // Assuming flashcard.kulhydrat is carbs per item
+            var billedkortKulhydratPr100Gram = flashcard.kulhydrat * (mængdeværdiIndsatIndeIFlashcard / flashcard.mængde)
+            return billedkortKulhydratPr100Gram
+            
+        case "Gram", "mL":
+            // Calculates carbs based on the proportion of 100g/ml.
+            // This assumes flashcard.kulhydrat is the carbs per 100g/ml of the item.
+            var billedkortKulhydratPr100Gram = flashcard.kulhydrat * (mængdeværdiIndsatIndeIFlashcard / flashcard.mængde)
+            return billedkortKulhydratPr100Gram
+            
+        default:
+            return 0
         }
     }
-    
     
     
     @Environment(\.dismiss) private var dismiss
@@ -169,9 +180,9 @@ struct IndtastMængdeMineKort: View {
                                 .padding(.bottom, 40)
                                 .padding(.top, 30)
                             
-                            switch formattedLucNumber{
+                            switch calculatedTotalBilledkortKulhydrat{
                             case _ where calculatedTotalBilledkortKulhydrat > 0.5:
-                                Text("\(formattedLucNumber) Gram")
+                                Text("\(calculatedTotalBilledkortKulhydrat, specifier: "%.0f") Gram")
                                     .bold()
                                     .font(.system(size: 20))
                                     .padding(.leading, 0)
@@ -241,6 +252,7 @@ struct IndtastMængdeMineKort: View {
             ToolbarItem(placement: .topBarTrailing){
                 Button(action: {
                     mealViewModel.addMealItem(flashcard: flashcard, amount: mængdeværdiIndsatIndeIFlashcard, carbs: calculatedTotalBilledkortKulhydrat)
+                    mealViewModel.shouldNavigateBackToStartNytMåltid = true
                 }) {
                     Text("Tilføj")
                 }

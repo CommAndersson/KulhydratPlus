@@ -10,19 +10,24 @@ import SwiftUI
 class MealViewModel: ObservableObject {
     @Published var mealItems: [MealItem] = []
     @Published var totalCarbs: Double = 0
-
+    @Published var shouldNavigateBackToStartNytMåltid: Bool = false
+    
     func addMealItem(flashcard: Flashcard, amount: Double, carbs: Double) {
-        // Ensure FlashcardNytMåltid is initialized correctly with the properties available in Flashcard
-        let newFlashcardNytMåltid = FlashcardNytMåltid(name: flashcard.navn, carbohydratePer100g: flashcard.kulhydrat) // Adjust property names as necessary
-        
+        let newFlashcardNytMåltid = FlashcardNytMåltid(name: flashcard.navn, kulhydrat: flashcard.kulhydrat, måleenhed: flashcard.måleenhed, mængde: flashcard.mængde)
         let newMealItem = MealItem(flashcard: newFlashcardNytMåltid, amount: amount)
-        // Assuming calculatedCarbs is computed within MealItem based on amount and carbohydratePer100g
-        
-        mealItems.append(newMealItem)
-        calculateTotalCarbs()
+        DispatchQueue.main.async {
+            self.mealItems.append(newMealItem)
+            self.calculateTotalCarbs()
+        }
     }
-
+    
     private func calculateTotalCarbs() {
-        totalCarbs = mealItems.reduce(0) { $0 + $1.calculatedCarbs }
+        DispatchQueue.main.async {
+            self.totalCarbs = self.mealItems.reduce(0) { $0 + $1.calculatedCarbs }
+        }
     }
 }
+
+
+
+

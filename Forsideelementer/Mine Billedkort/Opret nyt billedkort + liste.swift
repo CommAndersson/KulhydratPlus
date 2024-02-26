@@ -16,10 +16,12 @@ struct DeckDetailView: View {
     @Binding var selectedDeck: Deck?
     @ObservedObject var deck: Deck
     
+   
+    
     
     @State private var newNavn = ""
     @State private var newKulhydrat = ""
-    @State private var newMåleenhed = ""
+    @State private var newMåleenhed = "Gram"
     @State private var newMængde = ""
     
     var body: some View {

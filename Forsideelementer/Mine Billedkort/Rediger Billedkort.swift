@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct RedigerKort: View {
+    
+    @State private var showingAlert = false
+    @State private var alertMessage = ""
+    
     var flashcard: Flashcard
     @Environment(\.dismiss) private var dismiss
     @StateObject var flashcardManager: FlashcardManager
@@ -56,22 +60,28 @@ struct RedigerKort: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Done") {
-                    // Convert the edited kulhydrat and mængde from String to Double
-                    if let redigeretKulhydratDouble = Double(redigeretKulhydrat), let redigeretMængdeDouble = Double(redigeretMængde) {
-                        // Call updateCard to update the flashcard with new values
-                        flashcardManager.updateCard(
-                            in: deck,
-                            cardID: flashcard.id,
-                            newNavn: redigeretNavn.isEmpty ? nil : redigeretNavn, // Use nil if no change to preserve existing value
-                            newKulhydrat: redigeretKulhydratDouble,
-                            newMåleenhed: redigeretMåleenhed,
-                            newMængde: redigeretMængdeDouble,
-                            newAktivMængde: mængdeværdiIndsatIndeIFlashcard // Assuming this is the value you want to update, adjust as necessary
-                        )
+                    // Check for duplicate name only if the name has been changed.
+                    if redigeretNavn != flashcard.navn && deck.cards.contains(where: { $0.navn == redigeretNavn }) {
+                        alertMessage = "Et kort med navnet '\(redigeretNavn)' findes allerede."
+                        showingAlert = true
+                    } else {
+                        // Your existing code to update the flashcard.
+                        if let redigeretKulhydratDouble = Double(redigeretKulhydrat), let redigeretMængdeDouble = Double(redigeretMængde) {
+                            flashcardManager.updateCard(
+                                in: deck,
+                                cardID: flashcard.id,
+                                newNavn: redigeretNavn.isEmpty ? flashcard.navn : redigeretNavn,
+                                newKulhydrat: redigeretKulhydratDouble,
+                                newMåleenhed: redigeretMåleenhed,
+                                newMængde: redigeretMængdeDouble,
+                                newAktivMængde: mængdeværdiIndsatIndeIFlashcard
+                            )
+                        }
+                        dismiss()
                     }
-
-                    // Dismiss the view after updating
-                    dismiss()
+                }
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                 }
             }
         }

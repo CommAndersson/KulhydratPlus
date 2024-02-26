@@ -112,6 +112,9 @@ class FlashcardManager: ObservableObject {
             saveDecks()
         }
     }
+    
+    @Published var showAlert: Bool = false
+       @Published var alertMessage: String = ""
 
     // UserDefaults keys
     private let decksKey = "SavedDecks"
@@ -122,11 +125,26 @@ class FlashcardManager: ObservableObject {
     }
 
     func addCard(to deck: Deck, navn: String, kulhydrat: Double, måleenhed: String, mængde: Double, aktivMængde: Double) {
+        // Create a new card object
         let newCard = Flashcard(navn: navn, kulhydrat: kulhydrat, måleenhed: måleenhed, mængde: mængde, aktivMængde: aktivMængde)
+        
+        // Find the index of the specified deck
         if let index = decks.firstIndex(where: { $0.id == deck.id }) {
-            self.decks[index].cards.append(newCard)
-            saveDecks() // Save decks after adding a card
-            print("Card added to deck '\(deck.name)': \(newCard)")
+            // Check if a card with the same name already exists in the deck
+            let doesExist = decks[index].cards.contains { $0.navn.lowercased() == navn.lowercased() }
+            
+            if doesExist {
+                // Handle the case where the card name already exists
+                self.alertMessage = "Dette navn er allerede i brug"
+                                self.showAlert = true
+                print("A card with the name '\(navn)' already exists in the deck '\(deck.name)'.")
+                
+            } else {
+                // If no card with the same name exists, append the new card to the deck
+                self.decks[index].cards.append(newCard)
+                saveDecks() // Save decks after adding a card
+                print("Card added to deck '\(deck.name)': \(newCard)")
+            }
         } else {
             print("Error: Deck not found")
         }
@@ -163,10 +181,17 @@ class FlashcardManager: ObservableObject {
 
 
     func addDeck(name: String) {
-        let newDeck = Deck(name: name)
-        decks.append(newDeck)
-        saveDecks() // Save after adding a deck
-    }
+            let exists = decks.contains { $0.name == name }
+            if !exists {
+                let newDeck = Deck(name: name)
+                decks.append(newDeck)
+                saveDecks() // Make sure to implement this method to persist changes
+            } else {
+                // Set the flag and message to show the alert
+                self.alertMessage = "En Kategori med dette navn findes allerede."
+                self.showAlert = true
+            }
+        }
 
     func saveDecks() {
         do {
