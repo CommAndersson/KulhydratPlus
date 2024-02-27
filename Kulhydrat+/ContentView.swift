@@ -124,7 +124,7 @@ struct ContentView: View {
                 //.overlay(Color("BlåTilKnapper").opacity(0))
                 
                 VStack{
-                    NavigationLink(destination: KategoriSide(), label:{
+                  /*  NavigationLink(destination: KategoriSideGammel(), label:{
                         
                         ZStack{
                             Text("Kategorier")
@@ -143,7 +143,7 @@ struct ContentView: View {
                     .cornerRadius(10)
                     .padding(.bottom, 20)
                     .contentShape(Rectangle())
-                    
+                    */
                     
                     NavigationLink(destination: LoginSide(), label:{
                         
@@ -206,6 +206,28 @@ struct ContentView: View {
                     .cornerRadius(10)
                     .padding(.bottom, 20)
                     .contentShape(Rectangle())
+                    
+                    NavigationLink(destination:KategoriSide(), label:{
+                        
+                        ZStack{
+                            Text("Kulhydrat+ Kategorier")
+                                .foregroundColor(.black)
+                                .font(.system(size: 20))
+                                .padding(.bottom, 2)
+                            
+                            Rectangle()
+                                .frame(width: 300, height: 50)
+                                .foregroundColor(.black.opacity(0))
+                            
+                        }
+                    })
+                    .frame(width: 300, height: 50)
+                    .background(Color("BlåTilKnapper"))
+                    .cornerRadius(10)
+                    .padding(.bottom, 20)
+                    .contentShape(Rectangle())
+                
+                    
                 }
             }
             

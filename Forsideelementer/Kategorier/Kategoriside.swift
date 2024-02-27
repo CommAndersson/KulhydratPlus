@@ -11,7 +11,7 @@ import SwiftUI
 
     
 
-struct KategoriSide: View {
+struct KategoriSideGammel: View {
     var body: some View {
             
         
@@ -108,7 +108,7 @@ struct KategoriSide: View {
             VStack{
                 
                 
-                NavigationLink(destination: BælgfrugterOgLignende(),label:{
+                NavigationLink(destination: BælgfrugterOgLignendeNy(),label:{
                     ZStack{
                         Text("Bælgfrugter og Lignende")
                            .foregroundColor(.black)

@@ -27,7 +27,38 @@ struct VælgOverblik: View {
        // Text("Vælg overblik")
         NavigationView{
             VStack{
-                Text("Vælg Overblik")
+                ZStack{
+                    
+                    
+                    Rectangle()
+                        .frame(width: 350, height: 55)
+                        .foregroundColor(Color("BlåTilKnapper").opacity(0.6))
+                        .cornerRadius(20)
+                        .padding(.bottom, 10)
+                        .padding(.top, -30)
+                    
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color("BlåTilKnapper"), lineWidth: 2)
+                        .frame(width: 350, height: 55)
+                        .padding(.bottom, 10)
+                        .padding(.top, -30)
+                    
+                    
+                    Text("Vælg Overblik:")
+                        .bold()
+                    // .padding(.bottom)
+                    //.padding(.top, 40)
+                        .foregroundColor(.black)
+                        .font(.system(size: 30))
+                        .padding(.bottom, 40)
+                    
+                }
+                //.padding(.top, -150)
+                .padding(.bottom, 100)
+                
+                
+                
+                VStack{
                 
                 NavigationLink(destination: KategoriSide(), label:{
                     
@@ -69,6 +100,8 @@ struct VælgOverblik: View {
                 .cornerRadius(10)
                 .padding(.bottom, 20)
                 .contentShape(Rectangle())
+            }
+                .padding(.bottom, 300)
                 
             }
             .navigationBarBackButtonHidden(true)
