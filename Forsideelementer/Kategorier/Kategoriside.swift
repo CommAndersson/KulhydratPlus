@@ -16,6 +16,7 @@ struct KategoriSideGammel: View {
             
         
         
+        
         ZStack{
             //Color("BlåTilKnapper").opacity(0.3)
              // .ignoresSafeArea()

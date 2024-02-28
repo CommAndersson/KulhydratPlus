@@ -56,7 +56,6 @@
 		CEF608A52AFE54A300191813 /* Kulhydrat_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF608A42AFE54A300191813 /* Kulhydrat_App.swift */; };
 		CEF608A72AFE54A300191813 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF608A62AFE54A300191813 /* ContentView.swift */; };
 		CEF608AC2AFE54A300191813 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEF608AB2AFE54A300191813 /* Preview Assets.xcassets */; };
-		CEF608CD2B02B90C00191813 /* Bælgfrugter og lignende Gammel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF608CC2B02B90C00191813 /* Bælgfrugter og lignende Gammel.swift */; };
 		CEF608CF2B02BA1000191813 /* McDonalds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF608CE2B02BA1000191813 /* McDonalds.swift */; };
 		CEF608D12B03D7FA00191813 /* Fast Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF608D02B03D7FA00191813 /* Fast Food.swift */; };
 		CEF608D32B03D90C00191813 /* Burger King.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF608D22B03D90C00191813 /* Burger King.swift */; };
@@ -128,7 +127,6 @@
 		CEF608A42AFE54A300191813 /* Kulhydrat_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kulhydrat_App.swift; sourceTree = "<group>"; };
 		CEF608A62AFE54A300191813 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CEF608AB2AFE54A300191813 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CEF608CC2B02B90C00191813 /* Bælgfrugter og lignende Gammel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bælgfrugter og lignende Gammel.swift"; sourceTree = "<group>"; };
 		CEF608CE2B02BA1000191813 /* McDonalds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = McDonalds.swift; sourceTree = "<group>"; };
 		CEF608D02B03D7FA00191813 /* Fast Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fast Food.swift"; sourceTree = "<group>"; };
 		CEF608D22B03D90C00191813 /* Burger King.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Burger King.swift"; sourceTree = "<group>"; };
@@ -352,7 +350,6 @@
 			isa = PBXGroup;
 			children = (
 				CE0903132B8E20600069CD49 /* Bælgfrugter og Lignenden Ny.swift */,
-				CEF608CC2B02B90C00191813 /* Bælgfrugter og lignende Gammel.swift */,
 				CEF608EB2B03DF8300191813 /* Items på bælgf. og lign. */,
 			);
 			path = "Bælgfrugter og Lign.";
@@ -556,7 +553,6 @@
 				CEF608F72B03E08900191813 /* Linser.swift in Sources */,
 				CEF608A52AFE54A300191813 /* Kulhydrat_App.swift in Sources */,
 				CE0359172B125DD700B892F5 /* Figen.swift in Sources */,
-				CEF608CD2B02B90C00191813 /* Bælgfrugter og lignende Gammel.swift in Sources */,
 				CEF609122B0D1EBA00191813 /* Banan.swift in Sources */,
 				CEF608D32B03D90C00191813 /* Burger King.swift in Sources */,
 				CEF609092B0D1DCC00191813 /* Frugt.swift in Sources */,

@@ -42,61 +42,89 @@ struct BælgfrugterOgLignendeNy: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    @State var TyperAfBælgfrugt = [
-        BælgfrugterTyper(kategori: "Bulgur"),
-        BælgfrugterTyper(kategori: "Couscous"),
-        BælgfrugterTyper(kategori: "Hummus"),
-        BælgfrugterTyper(kategori: "Kikærter"),
-        BælgfrugterTyper(kategori: "Linser"),
-        BælgfrugterTyper(kategori: "Perlespelt"),
-        BælgfrugterTyper(kategori: "Røde Bønner"),
-        BælgfrugterTyper(kategori: "Quinoa")
-    ]
     
+    
+    let TyperAfBælgfrugt = [("Bulgur", "Bulgur"), ("Couscous", "Couscous"), ("Hummus", "Hummus"), ("Kikærter", "Kikærter"), ("Linser", "Linser"), ("Perlespelt", "Perlespelt"), ("Kidneybønner", "Kidneybønner"), ("Quinoa", "Quinoa")]
+
     var body: some View {
-        List(TyperAfBælgfrugt) { item in
-                    NavigationLink(destination: ViewSelectorBælgfrugter.viewForCategory(item.kategori)) {
-                        Text(item.kategori)
+            ScrollView {
+                LazyVStack {
+                    // Calculate the number of rows needed
+                    let numberOfRows = (TyperAfBælgfrugt.count + 1) / 2
+                    
+                    ForEach(0..<numberOfRows, id: \.self) { rowIndex in
+                        HStack {
+                            ForEach(0..<2, id: \.self) { columnIndex in
+                                let itemIndex = rowIndex * 2 + columnIndex
+                                if itemIndex < TyperAfBælgfrugt.count {
+                                    let category = TyperAfBælgfrugt[itemIndex].0 // Category name
+                                    NavigationLink(destination: ViewSelectorBælgfrugter.viewForCategory(category)) {
+                                        VStack {
+                                            Text(category)
+                                                .foregroundColor(.black)
+                                                .font(.system(size: 20))
+                                                .padding(.top, 35)
+                                            Image(category) // Assuming the imageName is the same as the category name
+                                                .resizable()
+                                                .frame(width: 90, height: 90)
+                                                .cornerRadius(10)
+                                                .padding(.bottom, 40)
+                                        }
+                                    }
+                                    .frame(width: 150, height: 150)
+                                    .background(Color("BlåTilKnapper"))
+                                    .cornerRadius(10)
+                                    .padding(.trailing, 20)
+                                    .contentShape(Rectangle())
+                                    .clipped()
+                                } else {
+                                    // Empty space for alignment
+                                }
+                            }
+                            if rowIndex == numberOfRows - 1 && TyperAfBælgfrugt.count % 2 != 0 {
+                                Spacer().frame(width: 178) // Conditional spacer
+                            }
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 20)
                     }
-                    .listStyle(.insetGrouped)
-                    //.padding(.bottom, 20)
-                    .listRowInsets(.init(top: 0, leading: 30, bottom: 0, trailing: 60))
-                    //.background(.white)
-                    .scrollContentBackground(.hidden)
-                    .environment(\.defaultMinListRowHeight, 50)
-                    .environment(\.defaultMinListHeaderHeight, 10)
-                    //.multilineTextAlignment(.center)
+                    
+                    
+                }
+                .padding(.top)
+            }
+            .navigationTitle("Bælgfrugter og Lign.")
+            .padding(.leading, 20)
+        }
+    }
+
+
+
+
+struct BælgfrugterNavigationLinkView: View {
+    let destination: AnyView
+    let title: String
+    let imageName: String
+
+    var body: some View {
+        NavigationLink(destination: destination) {
+            VStack {
+                Text(title)
                     .foregroundColor(.black)
-                    .listRowSeparatorTint(.black)
-                    .listRowBackground(Color("BlåTilKnapper"))
-                    .listSectionSeparatorTint(.black)
-                    .headerProminence(.increased)
-                
-                }
-        .scrollContentBackground(.hidden)
-        
-      /*  .listStyle(.insetGrouped)
-        .padding(.bottom, 20)
-        .listRowInsets(.init(top: 0, leading: 60, bottom: 50, trailing: 60))
-        .background(.white)
-        .scrollContentBackground(.hidden)
-        .environment(\.defaultMinListRowHeight, 50)
-        .environment(\.defaultMinListHeaderHeight, 10) */
-        
-        .navigationBarBackButtonHidden(true)
-        .toolbar{
-            ToolbarItem(placement: .topBarLeading){
-                Button{
-                    dismiss()
-                } label: {
-                    HStack{
-                        Image(systemName: "arrow.backward")
-                    }
-                }
+                    .font(.system(size: 20))
+                    .padding(.top, 35)
+                Image(imageName)
+                    .resizable()
+                    .frame(width: 90, height: 90)
+                    .cornerRadius(10)
+                    .padding(.bottom, 40)
             }
         }
-        
-        
+        .frame(width: 150, height: 150)
+        .background(Color("BlåTilKnapper"))
+        .cornerRadius(10)
+        .padding(.trailing, 20)
+        .contentShape(Rectangle())
+        .clipped()
     }
 }
-

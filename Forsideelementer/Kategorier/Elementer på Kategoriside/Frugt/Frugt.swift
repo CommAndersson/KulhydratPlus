@@ -350,3 +350,6 @@ struct Frugt: View {
     }
 }
 
+
+
+
