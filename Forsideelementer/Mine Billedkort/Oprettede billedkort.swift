@@ -273,3 +273,8 @@ struct FlashcardDetailView: View {
     }
     
 }
+
+
+
+
+
