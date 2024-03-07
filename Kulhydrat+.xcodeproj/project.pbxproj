@@ -39,6 +39,18 @@
 		CE21164D2B87D5F200D8B3CE /* Funktionsfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21164C2B87D5F200D8B3CE /* Funktionsfil.swift */; };
 		CE4E37CC2B8F9D6200507E73 /* Bælgfrugt Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E37CB2B8F9D6200507E73 /* Bælgfrugt Data.swift */; };
 		CE4E37CE2B8F9DC900507E73 /* BælgfrugtKort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E37CD2B8F9DC900507E73 /* BælgfrugtKort.swift */; };
+		CE4E37D02B920A6900507E73 /* Vælg Kulhydrat+ Kategori.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E37CF2B920A6900507E73 /* Vælg Kulhydrat+ Kategori.swift */; };
+		CE4E37D22B920A7E00507E73 /* Vælg Kulhydrat + Fødevare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E37D12B920A7E00507E73 /* Vælg Kulhydrat + Fødevare.swift */; };
+		CE4E37DC2B9353AA00507E73 /* Indtast Mængde Bælgfrugter Start Nyt Måltid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E37DB2B9353AA00507E73 /* Indtast Mængde Bælgfrugter Start Nyt Måltid.swift */; };
+		CE4E37DE2B9357C400507E73 /* Frugt Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E37DD2B9357C300507E73 /* Frugt Data.swift */; };
+		CE4E37E02B935C4600507E73 /* Frugt Kort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E37DF2B935C4600507E73 /* Frugt Kort.swift */; };
+		CE4E37E22B93632000507E73 /* Kulhydrat+ kategorier og kort funktionsfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E37E12B93632000507E73 /* Kulhydrat+ kategorier og kort funktionsfil.swift */; };
+		CE4E37E42B9397A700507E73 /* Kategorier Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E37E32B9397A700507E73 /* Kategorier Data.swift */; };
+		CE4E37E62B9A281900507E73 /* Kulhydrat+ Kort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E37E52B9A281900507E73 /* Kulhydrat+ Kort.swift */; };
+		CE4E37E92B9A57B900507E73 /* Furgt Kort Nyt Måltid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E37E82B9A57B900507E73 /* Furgt Kort Nyt Måltid.swift */; };
+		CE4E37EB2B9A58FE00507E73 /* Funktioner nyt Måltid Kulhyrdat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E37EA2B9A58FE00507E73 /* Funktioner nyt Måltid Kulhyrdat+.swift */; };
+		CE4E37ED2B9A5BA100507E73 /* FrugtListeNytMåltid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E37EC2B9A5BA100507E73 /* FrugtListeNytMåltid.swift */; };
+		CE4E37EF2B9A5C1C00507E73 /* Bælgfrugter List Nyt Måltid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E37EE2B9A5C1C00507E73 /* Bælgfrugter List Nyt Måltid.swift */; };
 		CEA826692B17C02900C13087 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA826682B17C02900C13087 /* LoadingView.swift */; };
 		CEA8266C2B17C4D200C13087 /* Profil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8266B2B17C4D200C13087 /* Profil.swift */; };
 		CEA8F2F72B6D368900765C53 /* Tilføj Ny Kategori.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8F2F62B6D368900765C53 /* Tilføj Ny Kategori.swift */; };
@@ -49,11 +61,7 @@
 		CEA8F3052B764E4D00765C53 /* Opret nyt billedkort + liste.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8F3042B764E4D00765C53 /* Opret nyt billedkort + liste.swift */; };
 		CEA8F3072B76524C00765C53 /* Custom back button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8F3062B76524C00765C53 /* Custom back button.swift */; };
 		CED42C222B17837000B00493 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CED42C212B17837000B00493 /* GoogleService-Info.plist */; };
-		CED42C302B17854300B00493 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CED42C2F2B17854300B00493 /* FirebaseAuth */; };
 		CED42C332B1785D800B00493 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED42C322B1785D800B00493 /* LoginView.swift */; };
-		CED42C352B17A36000B00493 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CED42C342B17A36000B00493 /* FirebaseFirestore */; };
-		CED42C372B17A38600B00493 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CED42C362B17A38600B00493 /* FirebaseFirestoreSwift */; };
-		CED42C392B17A38F00B00493 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CED42C382B17A38F00B00493 /* FirebaseStorage */; };
 		CED42C3C2B17A42400B00493 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED42C3B2B17A42400B00493 /* User.swift */; };
 		CEF608A52AFE54A300191813 /* Kulhydrat_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF608A42AFE54A300191813 /* Kulhydrat_App.swift */; };
 		CEF608A72AFE54A300191813 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF608A62AFE54A300191813 /* ContentView.swift */; };
@@ -115,6 +123,18 @@
 		CE21164C2B87D5F200D8B3CE /* Funktionsfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funktionsfil.swift; sourceTree = "<group>"; };
 		CE4E37CB2B8F9D6200507E73 /* Bælgfrugt Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bælgfrugt Data.swift"; sourceTree = "<group>"; };
 		CE4E37CD2B8F9DC900507E73 /* BælgfrugtKort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BælgfrugtKort.swift"; sourceTree = "<group>"; };
+		CE4E37CF2B920A6900507E73 /* Vælg Kulhydrat+ Kategori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vælg Kulhydrat+ Kategori.swift"; sourceTree = "<group>"; };
+		CE4E37D12B920A7E00507E73 /* Vælg Kulhydrat + Fødevare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vælg Kulhydrat + Fødevare.swift"; sourceTree = "<group>"; };
+		CE4E37DB2B9353AA00507E73 /* Indtast Mængde Bælgfrugter Start Nyt Måltid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Indtast Mængde Bælgfrugter Start Nyt Måltid.swift"; sourceTree = "<group>"; };
+		CE4E37DD2B9357C300507E73 /* Frugt Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Frugt Data.swift"; sourceTree = "<group>"; };
+		CE4E37DF2B935C4600507E73 /* Frugt Kort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Frugt Kort.swift"; sourceTree = "<group>"; };
+		CE4E37E12B93632000507E73 /* Kulhydrat+ kategorier og kort funktionsfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kulhydrat+ kategorier og kort funktionsfil.swift"; sourceTree = "<group>"; };
+		CE4E37E32B9397A700507E73 /* Kategorier Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kategorier Data.swift"; sourceTree = "<group>"; };
+		CE4E37E52B9A281900507E73 /* Kulhydrat+ Kort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kulhydrat+ Kort.swift"; sourceTree = "<group>"; };
+		CE4E37E82B9A57B900507E73 /* Furgt Kort Nyt Måltid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Furgt Kort Nyt Måltid.swift"; sourceTree = "<group>"; };
+		CE4E37EA2B9A58FE00507E73 /* Funktioner nyt Måltid Kulhyrdat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Funktioner nyt Måltid Kulhyrdat+.swift"; sourceTree = "<group>"; };
+		CE4E37EC2B9A5BA100507E73 /* FrugtListeNytMåltid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FrugtListeNytMåltid.swift"; sourceTree = "<group>"; };
+		CE4E37EE2B9A5C1C00507E73 /* Bælgfrugter List Nyt Måltid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bælgfrugter List Nyt Måltid.swift"; sourceTree = "<group>"; };
 		CEA826682B17C02900C13087 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CEA8266B2B17C4D200C13087 /* Profil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profil.swift; sourceTree = "<group>"; };
 		CEA8F2F62B6D368900765C53 /* Tilføj Ny Kategori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tilføj Ny Kategori.swift"; sourceTree = "<group>"; };
@@ -160,10 +180,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CED42C302B17854300B00493 /* FirebaseAuth in Frameworks */,
-				CED42C392B17A38F00B00493 /* FirebaseStorage in Frameworks */,
-				CED42C352B17A36000B00493 /* FirebaseFirestore in Frameworks */,
-				CED42C372B17A38600B00493 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,14 +198,55 @@
 			children = (
 				CE21163E2B878C3300D8B3CE /* Start Nyt Måltid.swift */,
 				CE2116402B878C4400D8B3CE /* Tidligere Måltider.swift */,
-				CE2116422B87B83B00D8B3CE /* Vælg Kategori Mine Kort.swift */,
 				CE2116462B87B95100D8B3CE /* Vælg Overblik.swift */,
-				CE2116482B87C10D00D8B3CE /* Vælg Fødevarer Mine Kort.swift */,
-				CE21164A2B87CB8B00D8B3CE /* IndtastMængde Mine Kort.swift */,
 				CE21164C2B87D5F200D8B3CE /* Funktionsfil.swift */,
+				CE4E37D62B920AA900507E73 /* Kulhydrat+ Kort */,
+				CE4E37D52B920A9400507E73 /* Mine Kort */,
 			);
 			name = "Start Nyt Måltid";
 			path = "Start Nyt Måltid";
+			sourceTree = "<group>";
+		};
+		CE4E37D52B920A9400507E73 /* Mine Kort */ = {
+			isa = PBXGroup;
+			children = (
+				CE21164A2B87CB8B00D8B3CE /* IndtastMængde Mine Kort.swift */,
+				CE2116482B87C10D00D8B3CE /* Vælg Fødevarer Mine Kort.swift */,
+				CE2116422B87B83B00D8B3CE /* Vælg Kategori Mine Kort.swift */,
+			);
+			path = "Mine Kort";
+			sourceTree = "<group>";
+		};
+		CE4E37D62B920AA900507E73 /* Kulhydrat+ Kort */ = {
+			isa = PBXGroup;
+			children = (
+				CE4E37D12B920A7E00507E73 /* Vælg Kulhydrat + Fødevare.swift */,
+				CE4E37CF2B920A6900507E73 /* Vælg Kulhydrat+ Kategori.swift */,
+				CE4E37EA2B9A58FE00507E73 /* Funktioner nyt Måltid Kulhyrdat+.swift */,
+				CE4E37E72B9A578400507E73 /* Frugt Nyt Måltid */,
+				CE4E37DA2B93537A00507E73 /* Bælgfrugter Stat Nyt Måltid */,
+			);
+			path = "Kulhydrat+ Kort";
+			sourceTree = "<group>";
+		};
+		CE4E37DA2B93537A00507E73 /* Bælgfrugter Stat Nyt Måltid */ = {
+			isa = PBXGroup;
+			children = (
+				CE4E37DB2B9353AA00507E73 /* Indtast Mængde Bælgfrugter Start Nyt Måltid.swift */,
+				CE4E37EE2B9A5C1C00507E73 /* Bælgfrugter List Nyt Måltid.swift */,
+			);
+			name = "Bælgfrugter Stat Nyt Måltid";
+			path = "Bælgfrugter Stat Nyt Måltid";
+			sourceTree = "<group>";
+		};
+		CE4E37E72B9A578400507E73 /* Frugt Nyt Måltid */ = {
+			isa = PBXGroup;
+			children = (
+				CE4E37E82B9A57B900507E73 /* Furgt Kort Nyt Måltid.swift */,
+				CE4E37EC2B9A5BA100507E73 /* FrugtListeNytMåltid.swift */,
+			);
+			name = "Frugt Nyt Måltid";
+			path = "Frugt Nyt Måltid";
 			sourceTree = "<group>";
 		};
 		CEA8266A2B17C46600C13087 /* Profil */ = {
@@ -381,8 +438,11 @@
 		CEF608EA2B03DEBB00191813 /* Kategorier */ = {
 			isa = PBXGroup;
 			children = (
+				CE4E37E32B9397A700507E73 /* Kategorier Data.swift */,
 				CE0903112B8D203F0069CD49 /* Kategorier.swift */,
 				CEF608DF2B03DC8D00191813 /* Kategoriside.swift */,
+				CE4E37E12B93632000507E73 /* Kulhydrat+ kategorier og kort funktionsfil.swift */,
+				CE4E37E52B9A281900507E73 /* Kulhydrat+ Kort.swift */,
 				CEF608D42B03D94E00191813 /* Elementer på Kategoriside */,
 			);
 			path = Kategorier;
@@ -408,6 +468,8 @@
 			isa = PBXGroup;
 			children = (
 				CEF609082B0D1DCC00191813 /* Frugt.swift */,
+				CE4E37DD2B9357C300507E73 /* Frugt Data.swift */,
+				CE4E37DF2B935C4600507E73 /* Frugt Kort.swift */,
 				CEF6090A2B0D1E5000191813 /* Items på Frugt-side */,
 			);
 			path = Frugt;
@@ -462,10 +524,6 @@
 			);
 			name = "Kulhydrat+";
 			packageProductDependencies = (
-				CED42C2F2B17854300B00493 /* FirebaseAuth */,
-				CED42C342B17A36000B00493 /* FirebaseFirestore */,
-				CED42C362B17A38600B00493 /* FirebaseFirestoreSwift */,
-				CED42C382B17A38F00B00493 /* FirebaseStorage */,
 			);
 			productName = "Kulhydrat+";
 			productReference = CEF608A12AFE54A300191813 /* Kulhydrat+.app */;
@@ -496,7 +554,6 @@
 			);
 			mainGroup = CEF608982AFE54A300191813;
 			packageReferences = (
-				CED42C232B17852700B00493 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = CEF608A22AFE54A300191813 /* Products */;
 			projectDirPath = "";
@@ -533,6 +590,7 @@
 				CEF608E02B03DC8D00191813 /* Kategoriside.swift in Sources */,
 				CEA826692B17C02900C13087 /* LoadingView.swift in Sources */,
 				CEF608ED2B03DFC900191813 /* Bulgur.swift in Sources */,
+				CE4E37E92B9A57B900507E73 /* Furgt Kort Nyt Måltid.swift in Sources */,
 				CEF6090E2B0D1E7200191813 /* Ananas.swift in Sources */,
 				CE0359352B125F6400B892F5 /* Æble.swift in Sources */,
 				CE2116412B878C4400D8B3CE /* Tidligere Måltider.swift in Sources */,
@@ -546,7 +604,9 @@
 				CE4E37CC2B8F9D6200507E73 /* Bælgfrugt Data.swift in Sources */,
 				CEF608DC2B03DAE800191813 /* Double Super Cheese.swift in Sources */,
 				CE03592D2B125F1800B892F5 /* Papaya.swift in Sources */,
+				CE4E37EB2B9A58FE00507E73 /* Funktioner nyt Måltid Kulhyrdat+.swift in Sources */,
 				CE0359252B125E7700B892F5 /* Mandarin.swift in Sources */,
+				CE4E37E02B935C4600507E73 /* Frugt Kort.swift in Sources */,
 				CEF609102B0D1E8000191813 /* Appelsin.swift in Sources */,
 				CEF608E32B03DD1100191813 /* Mine Kort.swift in Sources */,
 				CE0359112B125CBF00B892F5 /* Blomme.swift in Sources */,
@@ -562,24 +622,32 @@
 				CE0359172B125DD700B892F5 /* Figen.swift in Sources */,
 				CEF609122B0D1EBA00191813 /* Banan.swift in Sources */,
 				CEF608D32B03D90C00191813 /* Burger King.swift in Sources */,
+				CE4E37ED2B9A5BA100507E73 /* FrugtListeNytMåltid.swift in Sources */,
 				CEF609092B0D1DCC00191813 /* Frugt.swift in Sources */,
 				CEA8F3052B764E4D00765C53 /* Opret nyt billedkort + liste.swift in Sources */,
 				CEA8F3032B73E6D100765C53 /* Master funktionsfil.swift in Sources */,
+				CE4E37E62B9A281900507E73 /* Kulhydrat+ Kort.swift in Sources */,
 				CE0359332B125F5700B892F5 /* Vindruer.swift in Sources */,
 				CEF6090C2B0D1E6700191813 /* Abrikos.swift in Sources */,
+				CE4E37DC2B9353AA00507E73 /* Indtast Mængde Bælgfrugter Start Nyt Måltid.swift in Sources */,
 				CE21163F2B878C3300D8B3CE /* Start Nyt Måltid.swift in Sources */,
 				CEF608FC2B03E0BB00191813 /* Quinoa.swift in Sources */,
+				CE4E37DE2B9357C400507E73 /* Frugt Data.swift in Sources */,
+				CE4E37EF2B9A5C1C00507E73 /* Bælgfrugter List Nyt Måltid.swift in Sources */,
 				CEF608EF2B03DFF700191813 /* Røde Kidneybønner.swift in Sources */,
 				CE21164B2B87CB8B00D8B3CE /* IndtastMængde Mine Kort.swift in Sources */,
 				CE03590F2B125CA600B892F5 /* Blåbær.swift in Sources */,
 				CEF608CF2B02BA1000191813 /* McDonalds.swift in Sources */,
+				CE4E37D02B920A6900507E73 /* Vælg Kulhydrat+ Kategori.swift in Sources */,
 				CEA8F3072B76524C00765C53 /* Custom back button.swift in Sources */,
 				CEF608F52B03E06A00191813 /* Kikærter.swift in Sources */,
 				CEF608DA2B03DA7F00191813 /* Tasty Cheese.swift in Sources */,
 				CE4E37CE2B8F9DC900507E73 /* BælgfrugtKort.swift in Sources */,
+				CE4E37D22B920A7E00507E73 /* Vælg Kulhydrat + Fødevare.swift in Sources */,
 				CEF608DE2B03DB2000191813 /* Hamburger.swift in Sources */,
 				CEA8F2FF2B73E59500765C53 /* Opret nyt billedkort.swift in Sources */,
 				CE0359192B125DEC00B892F5 /* Granatæble.swift in Sources */,
+				CE4E37E42B9397A700507E73 /* Kategorier Data.swift in Sources */,
 				CEA8266C2B17C4D200C13087 /* Profil.swift in Sources */,
 				CE0409C82B7CDA980075E956 /* Rediger Billedkort.swift in Sources */,
 				CE0903122B8D203F0069CD49 /* Kategorier.swift in Sources */,
@@ -589,6 +657,7 @@
 				CEF608F92B03E09E00191813 /* Perlespelt.swift in Sources */,
 				CE03592B2B125F0B00B892F5 /* Nektarin.swift in Sources */,
 				CE0359212B125E3D00B892F5 /* Kirsebær.swift in Sources */,
+				CE4E37E22B93632000507E73 /* Kulhydrat+ kategorier og kort funktionsfil.swift in Sources */,
 				CEF608F12B03E03D00191813 /* Couscous.swift in Sources */,
 				CE0903142B8E20600069CD49 /* Bælgfrugter og Lignenden Ny.swift in Sources */,
 			);
@@ -795,40 +864,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		CED42C232B17852700B00493 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		CED42C2F2B17854300B00493 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CED42C232B17852700B00493 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		CED42C342B17A36000B00493 /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CED42C232B17852700B00493 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		CED42C362B17A38600B00493 /* FirebaseFirestoreSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CED42C232B17852700B00493 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestoreSwift;
-		};
-		CED42C382B17A38F00B00493 /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CED42C232B17852700B00493 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CEF608992AFE54A300191813 /* Project object */;
 }

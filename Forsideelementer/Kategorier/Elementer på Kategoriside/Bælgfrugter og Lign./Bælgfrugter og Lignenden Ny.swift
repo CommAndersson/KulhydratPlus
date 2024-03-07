@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+/*
 struct ViewSelectorBælgfrugter {
     static func viewForCategory(_ category: String) -> some View {
         switch category {
@@ -32,6 +32,9 @@ struct ViewSelectorBælgfrugter {
         }
     }
 }
+*/
+
+
 
 struct BælgfrugterTyper: Identifiable {
     let id = UUID()
@@ -40,93 +43,65 @@ struct BælgfrugterTyper: Identifiable {
 
 struct BælgfrugterOgLignendeNy: View {
     
+    
+    let columns: [GridItem] = [
+        GridItem(.flexible(), spacing: 0),
+        GridItem(.flexible(), spacing: 15)
+    ]
+    
     @Environment(\.dismiss) private var dismiss
     
     
+   /* let TyperAfBælgfrugt = [("Bulgur", "Bulgur"), ("Couscous", "Couscous"), ("Hummus", "Hummus"), ("Kikærter", "Kikærter"), ("Linser", "Linser"), ("Perlespelt", "Perlespelt"), ("Kidneybønner", "Kidneybønner"), ("Quinoa", "Quinoa"), ("test", "test")] */
     
-    let TyperAfBælgfrugt = [("Bulgur", "Bulgur"), ("Couscous", "Couscous"), ("Hummus", "Hummus"), ("Kikærter", "Kikærter"), ("Linser", "Linser"), ("Perlespelt", "Perlespelt"), ("Kidneybønner", "Kidneybønner"), ("Quinoa", "Quinoa")]
-
+    
+    
+    var categoryItems: [any CategoryItem] = []
+    
+    init() {
+        // Assuming frugtData and bælgfrugterData are already populated as shown in your example
+        categoryItems.append(contentsOf: bælgfrugterData)
+        categoryItems.append(contentsOf: frugtData)
+    }
+    
     var body: some View {
         ScrollView {
-                   LazyVStack {
-                       let numberOfRows = (TyperAfBælgfrugt.count + 1) / 2
-                       ForEach(0..<numberOfRows, id: \.self) { rowIndex in
-                           HStack {
-                               ForEach(0..<2, id: \.self) { columnIndex in
-                                   let itemIndex = rowIndex * 2 + columnIndex
-                                   if itemIndex < TyperAfBælgfrugt.count {
-                                       let category = TyperAfBælgfrugt[itemIndex].0
-                                       let bælgfrugt = bælgfrugterData.first { $0.bælgfrugtNavn == category } // Find corresponding Bælgfrugt instance
-                                       if let bælgfrugt = bælgfrugt {
-                                           NavigationLink(destination: BælgfrugtDetailView(bælgfrugt: bælgfrugt)) {
-                                               VStack {
-                                                   Text(category)
-                                                       .foregroundColor(.black)
-                                                       .font(.system(size: 20))
-                                                       .padding(.top, 35)
-                                                   Image(category)
-                                                       .resizable()
-                                                       .frame(width: 90, height: 90)
-                                                       .cornerRadius(10)
-                                                       .padding(.bottom, 40)
-                                               }
-                                           }
-                                           .frame(width: 150, height: 150)
-                                           .background(Color("BlåTilKnapper"))
-                                           .cornerRadius(10)
-                                           .padding(.trailing, 20)
-                                           .contentShape(Rectangle())
-                                           .clipped()
-                                       } else {
-                                           // Handle error or empty state
-                                       }
-                                   } else {
-                                       // Empty space for alignment
-                                   }
-                               }
-                               if rowIndex == numberOfRows - 1 && TyperAfBælgfrugt.count % 2 != 0 {
-                                   Spacer().frame(width: 178) // Conditional spacer
-                               }
-                           }
-                           .padding(.horizontal, 20)
-                           .padding(.bottom, 20)
-                       }
-                   }
-                   .padding(.top)
-               }
-               .navigationTitle("Bælgfrugter og Lign.")
-               .padding(.leading, 20)
-           }
-       }
+            LazyVGrid(columns: columns, spacing: 30) {
+                ForEach(categoryItems, id: \.id) { item in
+                    NavigationLink(destination: CategoryItemView(categoryItem: item)) {
+                        VStack {
+                            Text(item.Navn)
+                                .foregroundColor(.black)
+                                .font(.system(size: 20))
+                                .padding(.top, 35)
+                            Image(item.Billede)
+                                .resizable()
+                                .frame(width: 90, height: 90)
+                                .cornerRadius(10)
+                                .padding(.bottom, 40)
+                        }
+                    }
+                    .frame(width: 150, height: 150)
+                    .background(Color("BlåTilKnapper"))
+                    .cornerRadius(10)
+                    .padding(.trailing, 20)
+                }
+                .padding(.leading, 20)
+            }
+            .navigationTitle("Bælgfrugter og Lign.")
+        }
+        
+    }
+}
+   
     
 
 
 
 
-struct BælgfrugterNavigationLinkView: View {
-    let destination: AnyView
-    let title: String
-    let imageName: String
 
-    var body: some View {
-        NavigationLink(destination: destination) {
-            VStack {
-                Text(title)
-                    .foregroundColor(.black)
-                    .font(.system(size: 20))
-                    .padding(.top, 35)
-                Image(imageName)
-                    .resizable()
-                    .frame(width: 90, height: 90)
-                    .cornerRadius(10)
-                    .padding(.bottom, 40)
-            }
-        }
-        .frame(width: 150, height: 150)
-        .background(Color("BlåTilKnapper"))
-        .cornerRadius(10)
-        .padding(.trailing, 20)
-        .contentShape(Rectangle())
-        .clipped()
-    }
-}
+
+
+    
+    
+

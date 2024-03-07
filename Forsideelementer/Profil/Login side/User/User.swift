@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-import FirebaseFirestoreSwift
+
+/*import FirebaseFirestoreSwift
 
 struct User: Identifiable,Codable {
     @DocumentID var id: String?
@@ -21,3 +22,4 @@ struct User: Identifiable,Codable {
         case userEmail
     }
 }
+*/

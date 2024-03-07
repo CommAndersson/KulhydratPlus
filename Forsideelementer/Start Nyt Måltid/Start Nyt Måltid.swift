@@ -15,12 +15,15 @@ struct FlashcardNytMåltid: Identifiable {
     var mængde: Double // Amount or quantity that kulhydrat refers to
     var kulhydrat: Double
     
+    
+    
     init(name: String, kulhydrat: Double, måleenhed: String, mængde: Double) {
             self.name = name
             self.kulhydrat = kulhydrat
             self.måleenhed = måleenhed
             self.mængde = mængde
             self.carbohydratePer100g = kulhydrat / mængde // Calculate carbs per 100g based on given kulhydrat and mængde
+        
         }
     
     @StateObject var flashcardManager = FlashcardManager()
@@ -36,7 +39,7 @@ struct MealItem: Identifiable {
     var calculatedCarbs: Double {
         switch flashcard.måleenhed {
          case "Gram", "mL":
-             return (amount / 100.0) * flashcard.carbohydratePer100g
+             return amount * flashcard.carbohydratePer100g
          case "Antal":
              return amount * flashcard.carbohydratePer100g
          default:
@@ -54,7 +57,11 @@ struct MealItem: Identifiable {
 
 struct StartNytMåltid: View {
     
+    
+    
     @EnvironmentObject var mealViewModel: MealViewModel
+    
+    @State private var showingCategorySelection = false
     
     @State private var isShowingVælgFødevarerMineKort = false
     
@@ -70,6 +77,8 @@ struct StartNytMåltid: View {
     @State private var showingFlashcardPicker = false // To show or hide the flashcard picker
     @State private var showingVælgOverblik = false
     @State private var totalCarbs = 0.0
+    
+    
     
     @Environment(\.dismiss) private var dismiss
     
@@ -161,8 +170,11 @@ struct StartNytMåltid: View {
                 
                 // Handling sheet presentation for VælgOverblik
                 .sheet(isPresented: $showingVælgOverblik) {
-                    VælgOverblik(flashcardManager: flashcardManager, selectedDeck: $selectedDeck, deck: deck, flashcardCreationManager: flashcardCreationManager)
-                        .environmentObject(mealViewModel)
+                    VælgOverblik(flashcardManager: flashcardManager,
+                                 selectedDeck: $selectedDeck,
+                                 deck: deck,
+                                 categories: [/* Your categories here */])
+                    .environmentObject(mealViewModel)
                 }
                 
                 // Listening to changes for navigating back
@@ -191,6 +203,7 @@ struct StartNytMåltid: View {
                                         Text(item.flashcard.name) // Display the name of the flashcard
                                         Spacer()
                                         // Display the calculated carbs for each item, formatted to 2 decimal places
+                                        
                                         Text("\(item.calculatedCarbs, specifier: "%.0f")g Kulhydrat")
                                     }
                                 }

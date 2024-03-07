@@ -1,21 +1,26 @@
 //
-//  BælgfrugtKort.swift
+//  Furgt Kort Nyt Måltid.swift
 //  Kulhydrat+
 //
-//  Created by Sigurd Andersson on 28/02/2024.
+//  Created by Sigurd Andersson on 07/03/2024.
 //
 
 import SwiftUI
 
-struct BælgfrugtDetailView: View {
-    var bælgfrugt: Bælgfrugt
+struct FrugtNytMåltidDetailView: View {
+    var frugt: FrugtData
     @State private var gramInput: Double = 0
+    
+    @EnvironmentObject var mealViewModel: MealViewModel
 
+    @Environment(\.dismiss) private var dismiss
+    
+    var categoryItem: any CategoryItem
     var body: some View {
         
-    
 
 
+Text("Hej")
    
    ZStack{
        
@@ -36,7 +41,7 @@ struct BælgfrugtDetailView: View {
                    .frame(width: 240, height: 50)
                    .padding()
                
-               Text(bælgfrugt.Navn)
+               Text(frugt.Navn)
                    .bold()
                    .font(.title3)
                                        
@@ -122,7 +127,7 @@ struct BælgfrugtDetailView: View {
                        
 
                        
-                       Text("\(gramInput * bælgfrugt.carbPer100g, specifier: "%.0f") gram")
+                       Text("\(gramInput * frugt.carbPer100g, specifier: "%.0f") gram")
                            .bold()
                            .font(.system(size: 20))
                            .padding(.leading, 0)
@@ -148,7 +153,7 @@ struct BælgfrugtDetailView: View {
                .cornerRadius(10)
                .foregroundColor(.white.opacity(0.8))
            
-               Image(bælgfrugt.Billede)
+               Image(frugt.Billede)
                    .resizable()
                    .cornerRadius(10)
                    .frame(width: 325, height: 325)
@@ -164,21 +169,42 @@ struct BælgfrugtDetailView: View {
            
        }
    }
+   .navigationBarBackButtonHidden(true)
+   .toolbar {
+       ToolbarItem(placement: .topBarLeading) {
+           Button(action: {
+               dismiss()
+           }) {
+               HStack {
+                   Image(systemName: "arrow.backward")
+                   //Text("Back")
+               }
+           }
+       }
+       ToolbarItem(placement: .topBarTrailing) {
+           Button(action: {
+               let carbsPerGram = categoryItem.carbPer100g // Calculate carbs per gram
+               let totalCarbs = gramInput * carbsPerGram // Calculate total carbs based on input gram
+               // Create a new FlashcardNytMåltid based on the details
+               let newFlashcard = FlashcardNytMåltid(name: categoryItem.Navn, kulhydrat: totalCarbs, måleenhed: "Gram", mængde: gramInput)
+               // Create a new MealItem with the FlashcardNytMåltid
+               let newMealItem = MealItem(flashcard: newFlashcard, amount: gramInput)
+               // Add the new MealItem to the mealItems array
+               mealViewModel.addMealItem(newMealItem)
+               mealViewModel.shouldNavigateBackToStartNytMåltid = true // Navigate back if needed
+           }) {
+               Text("Tilføj")
+           }
+       }
+   }
+        
+   
+   
+   
   
 }
     
-   
-    
-    
-}
-/*
-struct BælgfrugtDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        // Create a sample Bælgfrugt instance for previewing
-        let sampleBælgfrugt = Bælgfrugt(bælgfrugtNavn: "bælgfrugtNavn", carbPer100g: 0.25, bælgfrugtBillede: "bælgfrugtBillede")
-        BælgfrugtDetailView(bælgfrugt: sampleBælgfrugt)
-            .previewLayout(.sizeThatFits)
-            .padding()
     }
-}
-*/
+    
+
+

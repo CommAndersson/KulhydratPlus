@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-
+/*
     
 
 struct KategoriSideGammel: View {
@@ -165,7 +165,7 @@ struct KategoriSideGammel: View {
                         .cornerRadius(10)
                         .padding(.bottom, 20)
                 
-                
+    
                 NavigationLink(destination: Frugt(), label:{
                     
                     ZStack{
@@ -192,7 +192,7 @@ struct KategoriSideGammel: View {
                         .background(Color("BlåTilKnapper"))
                         .cornerRadius(10)
                        
-                
+       
             }
                 
             }
@@ -207,4 +207,4 @@ struct KategoriSideGammel: View {
         
     
 
-      
+      */ 

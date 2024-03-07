@@ -23,13 +23,13 @@ struct IndtastMængdeMineKort: View {
         switch flashcard.måleenhed {
         case "Antal":
             // Assuming flashcard.kulhydrat is carbs per item
-            var billedkortKulhydratPr100Gram = flashcard.kulhydrat * (mængdeværdiIndsatIndeIFlashcard / flashcard.mængde)
+            let billedkortKulhydratPr100Gram = flashcard.kulhydrat * (mængdeværdiIndsatIndeIFlashcard / flashcard.mængde)
             return billedkortKulhydratPr100Gram
             
         case "Gram", "mL":
             // Calculates carbs based on the proportion of 100g/ml.
             // This assumes flashcard.kulhydrat is the carbs per 100g/ml of the item.
-            var billedkortKulhydratPr100Gram = flashcard.kulhydrat * (mængdeværdiIndsatIndeIFlashcard / flashcard.mængde)
+            let billedkortKulhydratPr100Gram = flashcard.kulhydrat * (mængdeværdiIndsatIndeIFlashcard / flashcard.mængde)
             return billedkortKulhydratPr100Gram
             
         default:

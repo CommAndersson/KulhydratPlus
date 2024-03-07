@@ -183,8 +183,8 @@ extension Formatter {
                 .padding(.bottom, 320)
                 
             }
+
         }
-        
         
         
        

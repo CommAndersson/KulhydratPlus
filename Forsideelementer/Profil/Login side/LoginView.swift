@@ -4,7 +4,7 @@
 //
 //  Created by Sigurd Andersson on 29/11/2023.
 //
-
+/*
 import SwiftUI
 import Firebase
 import FirebaseFirestore
@@ -329,3 +329,4 @@ extension View{
     }
     
 }
+*/

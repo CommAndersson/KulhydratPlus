@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Profil: View {
     var body: some View {
-        
+        /*
         NavigationLink(destination: LoginSide(), label:{
             
             ZStack{
@@ -29,7 +29,7 @@ struct Profil: View {
         .cornerRadius(10)
         .padding(.bottom, 20)
         .contentShape(Rectangle())
-        
+        */
         
         NavigationLink(destination: MineKort(), label:{
             

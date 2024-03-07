@@ -14,14 +14,18 @@ struct ContentView: View {
     @State var selectedDeck: Deck? = nil // This is fine as is
     @StateObject var deck = Deck() // Now works with the new parameterless init()
     
+    
+   
+    
     var body: some View {
+        /*
         if logStatus{
             Text("")
         }else{
             LoginSide()
-            
-            
         }
+        */
+        
         
         NavigationView{
             
@@ -144,7 +148,7 @@ struct ContentView: View {
                     .padding(.bottom, 20)
                     .contentShape(Rectangle())
                     */
-                    
+                    /*
                     NavigationLink(destination: LoginSide(), label:{
                         
                         ZStack{
@@ -164,7 +168,7 @@ struct ContentView: View {
                     .cornerRadius(10)
                     .padding(.bottom, 20)
                     .contentShape(Rectangle())
-                    
+                    */
                     
                     NavigationLink(destination: MineKort(), label:{
                         
@@ -207,7 +211,7 @@ struct ContentView: View {
                     .padding(.bottom, 20)
                     .contentShape(Rectangle())
                     
-                    NavigationLink(destination:KategoriSide(), label:{
+                    NavigationLink(destination:KategoriSide(categories: [BælgfrugterCategory(), /*FastFoodCategory(),*/ FrugtCategory()]), label:{
                         
                         ZStack{
                             Text("Kulhydrat+ Kategorier")

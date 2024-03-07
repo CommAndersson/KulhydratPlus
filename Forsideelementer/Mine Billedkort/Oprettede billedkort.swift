@@ -44,7 +44,7 @@ struct FlashcardDetailView: View {
     
     var flashcard: Flashcard
     
-    @StateObject var flashcardManager: FlashcardManager
+    @ObservedObject var flashcardManager: FlashcardManager
     @Binding var selectedDeck: Deck?
     @ObservedObject var deck: Deck
     
@@ -76,7 +76,7 @@ struct FlashcardDetailView: View {
     
     init(flashcard: Flashcard, flashcardManager: FlashcardManager, selectedDeck: Binding<Deck?>, deck: Deck) {
         self.flashcard = flashcard
-        self._flashcardManager = StateObject(wrappedValue: flashcardManager)
+        self._flashcardManager = ObservedObject(wrappedValue: flashcardManager)
         self._selectedDeck = selectedDeck
         self._deck = ObservedObject(wrappedValue: deck)  // Assuming deck is non-optional, replace it accordingly
     }
@@ -197,9 +197,9 @@ struct FlashcardDetailView: View {
                                     .padding(.leading, 0)
                                     .padding(.bottom, 50)
                                     .padding(.top, -10)
-
+                                
                             }
-
+                            
                         }
                         
                         
@@ -222,56 +222,69 @@ struct FlashcardDetailView: View {
                         .cornerRadius(10)
                         .foregroundColor(.white.opacity(0.8))
                     
-                    Image("Pære")
-                        .resizable()
-                        .cornerRadius(10)
-                        .frame(width: 325, height: 325)
-                    
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color("BlåTilKnapper"), lineWidth: 4)
-                        .frame(width: 330, height: 330)
+                    if let imageData = flashcard.imageData, let uiImage = UIImage(data: imageData) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 325, height: 325)
+                            .cornerRadius(10)
+                            .padding(.top, -80)
+                            .padding(.bottom, 320)
+                    } else {
+                        // Show a placeholder if no image exists
+                        Image("placeholder") // Make sure to have a placeholder image in your assets
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 325, height: 325)
+                            .cornerRadius(10)
+                            .padding(.top, -80)
+                            .padding(.bottom, 320)
+                        
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color("BlåTilKnapper"), lineWidth: 4)
+                            .frame(width: 330, height: 330)
+                        
+                        
+                    }
                     
                     
                 }
-                .padding(.top, -80)
-                .padding(.bottom, 320)
-                
             }
-        }
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                ForEach(deck.cards) { card in
-                    NavigationLink(
-                        destination: RedigerKort(
-                            flashcard: card,
-                            flashcardManager: flashcardManager,
-                            selectedDeck: $selectedDeck,
-                            deck: deck
-                            
-                        )
-                    ) {
-                        Text("Edit")
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    ForEach(deck.cards) { card in
+                        NavigationLink(
+                            destination: RedigerKort(
+                                flashcard: card,
+                                flashcardManager: flashcardManager,
+                                selectedDeck: $selectedDeck,
+                                deck: deck
+                                
+                            )
+                        ) {
+                            Text("Edit")
+                        }
+                    }
+                }
+                
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        HStack {
+                            Image(systemName: "arrow.backward")
+                            //Text("Back")
+                        }
                     }
                 }
             }
             
-            ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    HStack {
-                        Image(systemName: "arrow.backward")
-                        //Text("Back")
-                    }
-                }
-            }
+            
+            
         }
         
-        
-        
     }
-    
 }
 
 

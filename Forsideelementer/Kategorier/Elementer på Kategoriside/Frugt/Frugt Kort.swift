@@ -1,14 +1,14 @@
 //
-//  BælgfrugtKort.swift
+//  Frugt Kort.swift
 //  Kulhydrat+
 //
-//  Created by Sigurd Andersson on 28/02/2024.
+//  Created by Sigurd Andersson on 02/03/2024.
 //
 
 import SwiftUI
 
-struct BælgfrugtDetailView: View {
-    var bælgfrugt: Bælgfrugt
+struct FrugtDetailView: View {
+    var frugt: FrugtData
     @State private var gramInput: Double = 0
 
     var body: some View {
@@ -36,7 +36,7 @@ struct BælgfrugtDetailView: View {
                    .frame(width: 240, height: 50)
                    .padding()
                
-               Text(bælgfrugt.Navn)
+               Text(frugt.Navn)
                    .bold()
                    .font(.title3)
                                        
@@ -122,7 +122,7 @@ struct BælgfrugtDetailView: View {
                        
 
                        
-                       Text("\(gramInput * bælgfrugt.carbPer100g, specifier: "%.0f") gram")
+                       Text("\(gramInput * frugt.carbPer100g, specifier: "%.0f") gram")
                            .bold()
                            .font(.system(size: 20))
                            .padding(.leading, 0)
@@ -148,7 +148,7 @@ struct BælgfrugtDetailView: View {
                .cornerRadius(10)
                .foregroundColor(.white.opacity(0.8))
            
-               Image(bælgfrugt.Billede)
+               Image(frugt.Billede)
                    .resizable()
                    .cornerRadius(10)
                    .frame(width: 325, height: 325)
@@ -164,13 +164,15 @@ struct BælgfrugtDetailView: View {
            
        }
    }
+   
+   
+   
   
 }
     
-   
+    }
     
-    
-}
+
 /*
 struct BælgfrugtDetailView_Previews: PreviewProvider {
     static var previews: some View {

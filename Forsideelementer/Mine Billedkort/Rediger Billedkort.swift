@@ -14,7 +14,7 @@ struct RedigerKort: View {
     
     var flashcard: Flashcard
     @Environment(\.dismiss) private var dismiss
-    @StateObject var flashcardManager: FlashcardManager
+    @ObservedObject var flashcardManager: FlashcardManager
     @Binding var selectedDeck: Deck?
     @ObservedObject var deck: Deck
 

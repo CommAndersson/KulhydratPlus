@@ -16,6 +16,15 @@ struct Flashcard: Identifiable, Codable {
     var måleenhed: String
     var mængde: Double
     var aktivMængde: Double
+    var imageData: Data?
+    
+    
+    var image: UIImage? {
+           if let imageData = imageData {
+               return UIImage(data: imageData)
+           }
+           return nil
+       }
 }
 
 class Deck: Identifiable, ObservableObject, Equatable, Hashable, Codable {
@@ -124,7 +133,7 @@ class FlashcardManager: ObservableObject {
         loadDecks()
     }
 
-    func addCard(to deck: Deck, navn: String, kulhydrat: Double, måleenhed: String, mængde: Double, aktivMængde: Double) {
+    func addCard(to deck: Deck, navn: String, kulhydrat: Double, måleenhed: String, mængde: Double, aktivMængde: Double, imageData: Data?) {
         // Create a new card object
         let newCard = Flashcard(navn: navn, kulhydrat: kulhydrat, måleenhed: måleenhed, mængde: mængde, aktivMængde: aktivMængde)
         
@@ -228,5 +237,37 @@ class FlashcardCreationManager: ObservableObject {
         newKulhydrat = ""
         newMåleenhed = ""
         newMængde = ""
+    }
+}
+
+
+struct ImagePicker: UIViewControllerRepresentable {
+    @Binding var selectedImage: UIImage?
+    
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
+        return picker
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
+    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        var parent: ImagePicker
+        
+        init(_ parent: ImagePicker) {
+            self.parent = parent
+        }
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let image = info[.originalImage] as? UIImage {
+                parent.selectedImage = image
+            }
+            picker.dismiss(animated: true)
+        }
     }
 }

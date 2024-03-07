@@ -13,6 +13,10 @@ struct VælgOverblik: View {
     @ObservedObject var deck: Deck
     @StateObject var flashcardCreationManager = FlashcardCreationManager()
     
+    //let navigations: [OverblikNavigation]
+    
+    var categories: [NavigatableCategory]
+    
     @State private var newDeckName = ""
     @State private var mealItems: [MealItem] = [] // To store selected flashcards with amounts
     @State private var showingFlashcardPicker = false // To show or hide the flashcard picker
@@ -60,7 +64,10 @@ struct VælgOverblik: View {
                 
                 VStack{
                 
-                NavigationLink(destination: KategoriSide(), label:{
+                    NavigationLink(destination: KategoriSideNytMåltidKulhydratPlus(categories: [
+                        FrugtCategoryNytMåltid(), // Assuming this conforms to NavigatableCategoryNytMåltid
+                        BælgfrugterCategoryNytMåltid() // Same as above
+                    ]), label: {
                     
                     ZStack{
                         Text("Kulhydrat+ Kategorier")
