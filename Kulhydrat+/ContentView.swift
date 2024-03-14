@@ -211,7 +211,7 @@ struct ContentView: View {
                     .padding(.bottom, 20)
                     .contentShape(Rectangle())
                     
-                    NavigationLink(destination:KategoriSide(categories: [BælgfrugterCategory(), /*FastFoodCategory(),*/ FrugtCategory()]), label:{
+                    NavigationLink(destination:KategoriSide(categories: navigatableCategories), label:{
                         
                         ZStack{
                             Text("Kulhydrat+ Kategorier")

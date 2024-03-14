@@ -7,10 +7,7 @@
 
 import SwiftUI
 
-let fastFoodData: [any CategoryItem] = [
-    FrugtData(Navn: "Abrikos", carbPer100g: 0.11, Billede: "Abrikos"),
-    FrugtData(Navn: "Ananas", carbPer100g: 0.13, Billede: "Ananas"),
-]
+
 struct FastFood: View {
     
     var fastFood: FastFoodData

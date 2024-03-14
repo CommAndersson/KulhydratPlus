@@ -5,7 +5,7 @@
 //  Created by Sigurd Andersson on 21/11/2023.
 //
 
-
+/*
 
 import SwiftUI
 /*
@@ -123,4 +123,4 @@ struct Frugt: View {
 }
 
 */
-
+*/

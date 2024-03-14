@@ -17,8 +17,8 @@ struct KulhydratPlusKort: View {
         GridItem(.flexible(), spacing: 15)
     ]
     
-    let TyperAfFrugt = [("Abrikos", "Abrikos"), ("Ananas", "Anana"), ("Appelsin", "Appelsin"), ("Banan", "Banan"), ("Blomme", "Blomme"), ("Blåbær", "Blåbær"), ("Cantaloupe Melon", "Cantaloupe Melon"), ("Dadler", "Dadler"), ("Figen", "Figen"), ("Granatæble", "Granatæble"), ("Hindbær", "Hindbær"), ("Honningmelon", "Honningmelon"), ("Jordbær", "Jordbær"), ("Kirsebær", "Kirsebær"), ("Kiwi", "Kiwi"), ("Kokosnød", "Kokosnød"), ("Mandarin", "Mandarin"), ("Mango", "Mango"), ("Nektarin", "Nektarin"), ("Papaya", "Papaya"), ("Pære", "Pære"), ("Vandmelon", "Vandmelon"), ("Vindruer", "Vindruer"), ("Æble", "Æble")]
-    
+   /* let TyperAfFrugt = [("Abrikos", "Abrikos"), ("Ananas", "Anana"), ("Appelsin", "Appelsin"), ("Banan", "Banan"), ("Blomme", "Blomme"), ("Blåbær", "Blåbær"), ("Cantaloupe Melon", "Cantaloupe Melon"), ("Dadler", "Dadler"), ("Figen", "Figen"), ("Granatæble", "Granatæble"), ("Hindbær", "Hindbær"), ("Honningmelon", "Honningmelon"), ("Jordbær", "Jordbær"), ("Kirsebær", "Kirsebær"), ("Kiwi", "Kiwi"), ("Kokosnød", "Kokosnød"), ("Mandarin", "Mandarin"), ("Mango", "Mango"), ("Nektarin", "Nektarin"), ("Papaya", "Papaya"), ("Pære", "Pære"), ("Vandmelon", "Vandmelon"), ("Vindruer", "Vindruer"), ("Æble", "Æble")]
+    */
   
     
     var categoryItems: [any CategoryItem]
@@ -30,7 +30,7 @@ struct KulhydratPlusKort: View {
         init(categories: [NavigatableCategory]) {
             self.categories = categories
             // Directly initialize `categoryItems` with combined data if available
-            self.categoryItems = frugtData + bælgfrugterData
+            self.categoryItems = frugtData + bælgfrugterData + fastFoodData
         }
         
         var body: some View {

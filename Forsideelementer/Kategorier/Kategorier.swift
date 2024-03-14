@@ -1,37 +1,66 @@
 //
-//  Kategorier.swift
+//  Kategoriside.swift
 //  Kulhydrat+
 //
-//  Created by Sigurd Andersson on 26/02/2024.
+//  Created by Sigurd Andersson on 14/11/2023.
 //
 
 import SwiftUI
 
-struct KategoriSide: View {
-    // Array of NavigatableCategory
-    let categories: [NavigatableCategory] 
+protocol NavigatableCategory {
+    var title: String { get }
+    var destinationView: AnyView { get }
+    var categoryItems: [any CategoryItem] { get }
+}
 
-    var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                ForEach(categories.indices, id: \.self) { index in
-                    let category = categories[index]
-                    NavigationLink(destination: category.destinationView) {
-                        Text(category.title)
-                            .frame(width: 300, height: 50)
-                            .background(Color("BlåTilKnapper"))
-                            .foregroundColor(.black)
-                            .font(.system(size: 20))
-                            .cornerRadius(10)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color("RoyalBlue"), lineWidth: 4)
-                            )
-                    }
-                }
-            }
-            .padding()
-        }
-        .navigationTitle("Kategorier")
+let navigatableCategories: [NavigatableCategory] = [
+    BælgfrugterCategory(),
+    FastFoodCategory(),
+    FastFoodRestaurantsCategory(),
+    FrugtCategory()
+    // Add more categories here
+]
+
+struct BælgfrugterCategory: NavigatableCategory {
+    var title: String = "Bælgfrugter og Lignende"
+    var categoryItems: [any CategoryItem] = bælgfrugterData
+    var destinationView: AnyView {
+        // No need for `init` here, the view is created when accessed
+        AnyView(NavigatableCategoryView(navigatableCategory: self))
+    }
+}
+
+struct FastFoodCategory: NavigatableCategory {
+    var title: String = "Fast Food"
+    var categoryItems: [any CategoryItem] = fastFoodData
+    var destinationView: AnyView {
+        // No need for `init` here, the view is created when accessed
+        AnyView(NavigatableCategoryView(navigatableCategory: self))
+    }
+}
+
+struct FastFoodRestaurantsCategory: NavigatableCategory {
+    var categoryItems: [any CategoryItem] {
+        return restaurants.flatMap { $0.categoryItems }
+    }
+    
+    var title: String = "Fast Food Restaurants"
+    var restaurants: [FastFoodRestaurant] = [
+        McDonalds1(), // Make sure McDonalds1() is initialized correctly.
+        // Add other restaurants here...
+    ]
+
+    var destinationView: AnyView {
+        AnyView(VælgFastFoodRestaurant(restaurants: restaurants))
+    }
+}
+
+
+struct FrugtCategory: NavigatableCategory {
+    var title: String = "Frugt"
+    var categoryItems: [any CategoryItem] = frugtData
+    var destinationView: AnyView {
+        // No need for `init` here, the view is created when accessed
+        AnyView(NavigatableCategoryView(navigatableCategory: self))
     }
 }

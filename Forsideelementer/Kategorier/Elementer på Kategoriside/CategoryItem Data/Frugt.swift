@@ -1,20 +1,14 @@
 //
-//  Frugt Data.swift
+//  Frugt.swift
 //  Kulhydrat+
 //
-//  Created by Sigurd Andersson on 02/03/2024.
+//  Created by Sigurd Andersson on 13/03/2024.
 //
 
 import SwiftUI
-/*
-struct FrugtData: CategoryItem {
-    let id = UUID()
-    let Navn: String
-    let carbPer100g: Double
-    let Billede: String
-}*/
 
-// Sample data
+
+
 let frugtData: [any CategoryItem] = [
     FrugtData(Navn: "Abrikos", carbPer100g: 0.11, Billede: "Abrikos"),
     FrugtData(Navn: "Ananas", carbPer100g: 0.13, Billede: "Ananas"),
@@ -42,5 +36,3 @@ let frugtData: [any CategoryItem] = [
     FrugtData(Navn: "Æble", carbPer100g: 0.11, Billede: "Æble"),
     // Add more here
 ]
-
-

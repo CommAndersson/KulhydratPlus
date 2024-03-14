@@ -4,7 +4,7 @@
 //
 //  Created by Sigurd Andersson on 27/02/2024.
 //
-
+/*
 import SwiftUI
 /*
 struct ViewSelectorBælgfrugter {
@@ -97,7 +97,7 @@ struct BælgfrugterOgLignendeNy: View {
     
 
 
-
+*/
 
 
 

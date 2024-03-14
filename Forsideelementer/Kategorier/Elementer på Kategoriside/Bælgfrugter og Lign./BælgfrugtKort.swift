@@ -4,7 +4,7 @@
 //
 //  Created by Sigurd Andersson on 28/02/2024.
 //
-
+/*
 import SwiftUI
 
 struct BælgfrugtDetailView: View {
@@ -181,4 +181,5 @@ struct BælgfrugtDetailView_Previews: PreviewProvider {
             .padding()
     }
 }
+*/
 */
