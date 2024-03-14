@@ -58,6 +58,9 @@
 		CE9CD2592BA21E8600FC18B9 /* Navigatable Fastfood Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CD2582BA21E8600FC18B9 /* Navigatable Fastfood Restaurant.swift */; };
 		CE9CD25B2BA21EFC00FC18B9 /* Fastfood Restaurant Funktionsfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CD25A2BA21EFC00FC18B9 /* Fastfood Restaurant Funktionsfil.swift */; };
 		CE9CD25E2BA226ED00FC18B9 /* McDonalds Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CD25D2BA226ED00FC18B9 /* McDonalds Data.swift */; };
+		CE9CD2602BA3165100FC18B9 /* Kulhydrat+ NytMåltid Kort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CD25F2BA3165100FC18B9 /* Kulhydrat+ NytMåltid Kort.swift */; };
+		CE9CD2622BA3264500FC18B9 /* Vælg Fastfood Restaurant NytMåltid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CD2612BA3264500FC18B9 /* Vælg Fastfood Restaurant NytMåltid.swift */; };
+		CE9CD2642BA32ABC00FC18B9 /* FastFood Restauranter Nyt Måltid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CD2632BA32ABC00FC18B9 /* FastFood Restauranter Nyt Måltid.swift */; };
 		CEA826692B17C02900C13087 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA826682B17C02900C13087 /* LoadingView.swift */; };
 		CEA8266C2B17C4D200C13087 /* Profil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8266B2B17C4D200C13087 /* Profil.swift */; };
 		CEA8F2F72B6D368900765C53 /* Tilføj Ny Kategori.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8F2F62B6D368900765C53 /* Tilføj Ny Kategori.swift */; };
@@ -149,6 +152,9 @@
 		CE9CD2582BA21E8600FC18B9 /* Navigatable Fastfood Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigatable Fastfood Restaurant.swift"; sourceTree = "<group>"; };
 		CE9CD25A2BA21EFC00FC18B9 /* Fastfood Restaurant Funktionsfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fastfood Restaurant Funktionsfil.swift"; sourceTree = "<group>"; };
 		CE9CD25D2BA226ED00FC18B9 /* McDonalds Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "McDonalds Data.swift"; sourceTree = "<group>"; };
+		CE9CD25F2BA3165100FC18B9 /* Kulhydrat+ NytMåltid Kort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kulhydrat+ NytMåltid Kort.swift"; sourceTree = "<group>"; };
+		CE9CD2612BA3264500FC18B9 /* Vælg Fastfood Restaurant NytMåltid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vælg Fastfood Restaurant NytMåltid.swift"; sourceTree = "<group>"; };
+		CE9CD2632BA32ABC00FC18B9 /* FastFood Restauranter Nyt Måltid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FastFood Restauranter Nyt Måltid.swift"; sourceTree = "<group>"; };
 		CEA826682B17C02900C13087 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CEA8266B2B17C4D200C13087 /* Profil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profil.swift; sourceTree = "<group>"; };
 		CEA8F2F62B6D368900765C53 /* Tilføj Ny Kategori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tilføj Ny Kategori.swift"; sourceTree = "<group>"; };
@@ -237,6 +243,9 @@
 				CE4E37D12B920A7E00507E73 /* Vælg Kulhydrat + Fødevare.swift */,
 				CE4E37CF2B920A6900507E73 /* Vælg Kulhydrat+ Kategori.swift */,
 				CE4E37EA2B9A58FE00507E73 /* Funktioner nyt Måltid Kulhyrdat+.swift */,
+				CE9CD25F2BA3165100FC18B9 /* Kulhydrat+ NytMåltid Kort.swift */,
+				CE9CD2612BA3264500FC18B9 /* Vælg Fastfood Restaurant NytMåltid.swift */,
+				CE9CD2632BA32ABC00FC18B9 /* FastFood Restauranter Nyt Måltid.swift */,
 				CE4E37E72B9A578400507E73 /* Frugt Nyt Måltid */,
 				CE4E37DA2B93537A00507E73 /* Bælgfrugter Stat Nyt Måltid */,
 			);
@@ -635,6 +644,7 @@
 				CEF608E02B03DC8D00191813 /* Kategorier.swift in Sources */,
 				CEA826692B17C02900C13087 /* LoadingView.swift in Sources */,
 				CEF608ED2B03DFC900191813 /* Bulgur.swift in Sources */,
+				CE9CD2602BA3165100FC18B9 /* Kulhydrat+ NytMåltid Kort.swift in Sources */,
 				CE4E37E92B9A57B900507E73 /* Furgt Kort Nyt Måltid.swift in Sources */,
 				CEF6090E2B0D1E7200191813 /* Ananas.swift in Sources */,
 				CE0359352B125F6400B892F5 /* Æble.swift in Sources */,
@@ -643,6 +653,7 @@
 				CEA8F3012B73E5A900765C53 /* Oprettede billedkort.swift in Sources */,
 				CEA8F2F72B6D368900765C53 /* Tilføj Ny Kategori.swift in Sources */,
 				CE2116492B87C10D00D8B3CE /* Vælg Fødevarer Mine Kort.swift in Sources */,
+				CE9CD2622BA3264500FC18B9 /* Vælg Fastfood Restaurant NytMåltid.swift in Sources */,
 				CE9CD2572BA21E4100FC18B9 /* Vælg Fastfood Restaurant.swift in Sources */,
 				CE9CD2542BA20D6500FC18B9 /* CategoryItems.swift in Sources */,
 				CEF608D82B03D9DA00191813 /* Cheeseburger.swift in Sources */,
@@ -689,6 +700,7 @@
 				CE03590F2B125CA600B892F5 /* Blåbær.swift in Sources */,
 				CEF608CF2B02BA1000191813 /* McDonalds.swift in Sources */,
 				CE4E37D02B920A6900507E73 /* Vælg Kulhydrat+ Kategori.swift in Sources */,
+				CE9CD2642BA32ABC00FC18B9 /* FastFood Restauranter Nyt Måltid.swift in Sources */,
 				CEA8F3072B76524C00765C53 /* Custom back button.swift in Sources */,
 				CEF608F52B03E06A00191813 /* Kikærter.swift in Sources */,
 				CEF608DA2B03DA7F00191813 /* Tasty Cheese.swift in Sources */,

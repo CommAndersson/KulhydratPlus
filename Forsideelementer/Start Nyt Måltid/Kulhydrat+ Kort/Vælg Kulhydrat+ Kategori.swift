@@ -21,9 +21,9 @@ struct KategoriSideNytMåltidKulhydratPlus: View {
         Kategorier(kategori: "Frugt"),
     ]
     
-    var categories: [NavigatableCategoryNytMåltid]
+    var categories: [any NavigatableCategoryNytMåltid]
     
-    init(categories: [NavigatableCategoryNytMåltid]) {
+    init(categories: [any NavigatableCategoryNytMåltid]) {
             self.categories = categories
         }
     
@@ -54,7 +54,7 @@ struct KategoriSideNytMåltidKulhydratPlus: View {
                 ScrollView {
                     VStack(spacing: 20) {
                         ForEach(categories, id: \.title) { category in
-                            NavigationLink(destination: category.destinationView()) {
+                            NavigationLink(destination: category.destinationViewNytMåltid) {
                                 Text(category.title)
                                     .frame(width: 300, height: 50)
                                     .background(Color("BlåTilKnapper"))

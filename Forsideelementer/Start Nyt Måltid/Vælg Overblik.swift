@@ -15,7 +15,7 @@ struct VælgOverblik: View {
     
     //let navigations: [OverblikNavigation]
     
-    var categories: [NavigatableCategory]
+    let categories: [any NavigatableCategoryNytMåltid]
     
     @State private var newDeckName = ""
     @State private var mealItems: [MealItem] = [] // To store selected flashcards with amounts
@@ -64,10 +64,7 @@ struct VælgOverblik: View {
                 
                 VStack{
                 
-                    NavigationLink(destination: KategoriSideNytMåltidKulhydratPlus(categories: [
-                        FrugtCategoryNytMåltid(), // Assuming this conforms to NavigatableCategoryNytMåltid
-                        BælgfrugterCategoryNytMåltid() // Same as above
-                    ]), label: {
+                    NavigationLink(destination: KategoriSideNytMåltidKulhydratPlus(categories: navigatableCategoriesNytMåltid), label: {
                     
                     ZStack{
                         Text("Kulhydrat+ Kategorier")
