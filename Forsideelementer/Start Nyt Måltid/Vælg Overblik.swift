@@ -28,21 +28,26 @@ struct VælgOverblik: View {
     @EnvironmentObject var mealViewModel: MealViewModel
     
     var body: some View {
-       // Text("Vælg overblik")
+        // Text("Vælg overblik")
+        
         NavigationView{
+            ZStack{
+                Color("GrønBaggrund")
+                    .ignoresSafeArea()
+                    .opacity(0.4)
             VStack{
                 ZStack{
                     
                     
                     Rectangle()
                         .frame(width: 350, height: 55)
-                        .foregroundColor(Color("BlåTilKnapper").opacity(0.6))
-                        .cornerRadius(20)
+                        .foregroundColor(Color("GrønEmneBaggrund").opacity(0.6))
+                        .cornerRadius(10)
                         .padding(.bottom, 10)
                         .padding(.top, -30)
                     
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color("BlåTilKnapper"), lineWidth: 2)
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.black, lineWidth: 1)
                         .frame(width: 350, height: 55)
                         .padding(.bottom, 10)
                         .padding(.top, -30)
@@ -63,48 +68,48 @@ struct VælgOverblik: View {
                 
                 
                 VStack{
-                
+                    
                     NavigationLink(destination: KategoriSideNytMåltidKulhydratPlus(categories: navigatableCategoriesNytMåltid), label: {
+                        
+                        ZStack{
+                            Text("Kulhydrat+ Kategorier")
+                                .foregroundColor(.black)
+                                .font(.system(size: 20))
+                                .padding(.bottom, 2)
+                            
+                            Rectangle()
+                                .frame(width: 300, height: 50)
+                                .foregroundColor(.black.opacity(0))
+                            
+                        }
+                    })
+                    .frame(width: 300, height: 50)
+                    .background(Color("GrønEmneBaggrund"))
+                    .cornerRadius(10)
+                    .padding(.bottom, 20)
+                    .contentShape(Rectangle())
                     
-                    ZStack{
-                        Text("Kulhydrat+ Kategorier")
-                            .foregroundColor(.black)
-                            .font(.system(size: 20))
-                            .padding(.bottom, 2)
-                        
-                        Rectangle()
-                            .frame(width: 300, height: 50)
-                            .foregroundColor(.black.opacity(0))
-                        
-                    }
-                })
-                .frame(width: 300, height: 50)
-                .background(Color("BlåTilKnapper"))
-                .cornerRadius(10)
-                .padding(.bottom, 20)
-                .contentShape(Rectangle())
-                
-                
-                NavigationLink(destination: FlashcardPicker(selectedFlashcards: $mealItems, flashcardManager: flashcardManager, selectedDeck: $selectedDeck, deck: deck, flashcardCreationManager: flashcardCreationManager), label: {
                     
-                    ZStack{
-                        Text("Mine Kort")
-                            .foregroundColor(.black)
-                            .font(.system(size: 20))
-                            .padding(.bottom, 2)
+                    NavigationLink(destination: FlashcardPicker(selectedFlashcards: $mealItems, flashcardManager: flashcardManager, selectedDeck: $selectedDeck, deck: deck, flashcardCreationManager: flashcardCreationManager), label: {
                         
-                        Rectangle()
-                            .frame(width: 300, height: 50)
-                            .foregroundColor(.black.opacity(0))
-                        
-                    }
-                })
-                .frame(width: 300, height: 50)
-                .background(Color("BlåTilKnapper"))
-                .cornerRadius(10)
-                .padding(.bottom, 20)
-                .contentShape(Rectangle())
-            }
+                        ZStack{
+                            Text("Mine Kort")
+                                .foregroundColor(.black)
+                                .font(.system(size: 20))
+                                .padding(.bottom, 2)
+                            
+                            Rectangle()
+                                .frame(width: 300, height: 50)
+                                .foregroundColor(.black.opacity(0))
+                            
+                        }
+                    })
+                    .frame(width: 300, height: 50)
+                    .background(Color("GrønEmneBaggrund"))
+                    .cornerRadius(10)
+                    .padding(.bottom, 20)
+                    .contentShape(Rectangle())
+                }
                 .padding(.bottom, 300)
                 
             }
@@ -119,10 +124,11 @@ struct VælgOverblik: View {
                         }
                     }
                 }
-
+                
             }
             
         }
+    }
         
     }
 }

@@ -8,6 +8,6 @@
 import SwiftUI
 
 let fastFoodData: [any CategoryItem] = [
-    FastFoodData(Navn: "Cheeseburger", carbPer100g: 0.29, Billede: "Abrikos"),
-    FastFoodData(Navn: "Hamburger", carbPer100g: 0.29, Billede: "Ananas"),
+    FastFoodData(Navn: "Cheeseburger", carbPer100g: 0.29, Billede: "Abrikos", Enhed: "Antal"),
+    FastFoodData(Navn: "Hamburger", carbPer100g: 0.29, Billede: "Ananas", Enhed: "Antal"),
 ]

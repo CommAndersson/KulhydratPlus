@@ -84,22 +84,207 @@ struct FlashcardDetailView: View {
     
     var body: some View {
         
-        ZStack{
+            ZStack{
+                
+                Color("GrønBaggrund")
+                    .ignoresSafeArea()
+                
+                VStack{
+                    
+                    ZStack{
+                        Rectangle()
+                        .frame(width: 240, height: 50)
+                        .foregroundColor(Color("GrønTekst").opacity(0.6))
+                        .cornerRadius(10)
+                        .padding()
+                        
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.black, lineWidth: 1)
+                            .frame(width: 240, height: 50)
+                            .padding()
+                        
+                        Text("\(flashcard.navn)")
+                            .bold()
+                            .font(.title3)
+                                                
+                    }
+                    .padding(.top, 200)
+                    .padding(.bottom, -2)
+                    
+                    
+                    ZStack{
+                        Rectangle()
+                        .frame(width: 330, height: 140)
+                        .foregroundColor(Color("GrønTekst").opacity(0.6))
+                        .cornerRadius(10)
+                        .padding(.bottom, 40)
+                        
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.black, lineWidth: 1)
+                            .frame(width: 330, height: 140)
+                            .padding(.bottom, 40)
+                        
+                        
+                        HStack{
+                            
+                            VStack{
+                            Text("\(flashcard.måleenhed):")
+                                .bold()
+                                .padding(.leading, -10)
+                                .font(.system(size: 24))
+                                .padding(.top, 40)
+                                .padding(.bottom, -25)
+                                
+                            ZStack{
+                                Rectangle()
+                                .frame(width: 100, height: 40)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(10)
+                                .padding(.bottom, 50)
+                                .padding(.top, 25)
+                                .padding(.leading, -20)
+                                .padding(.trailing, -10)
+                                
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.black, lineWidth: 1)
+                                    .frame(width: 100, height: 40)
+                                    .padding(.bottom, 50)
+                                    .padding(.top, 25)
+                                    .padding(.leading, -20)
+                                    .padding(.trailing, -10)
+                                
+                                
+                                TextField("\(flashcard.måleenhed)", value: $mængdeværdiIndsatIndeIFlashcard, formatter: Formatter.lucNumberFormatBilledkort)
+                                    .font(.title3)
+                                    .frame(width: 120, height: 80)
+                                    .clipped()
+                                    .padding(.trailing, -20)
+                                    .padding(.bottom, 50)
+                                    .padding(.top, 25)
+                                    .padding(.leading, 40)
+                                   
+                                
+                                
+                                }
+                                
+                            }
+                            .padding(.bottom, 50)
+                            .padding(.top, 10)
+                            .padding(.top, 20)
+                            
+                            VStack{
+                                Text("Kulhydrater:")
+                                    .bold()
+                                    .font(.system(size: 24))
+                                    .padding(.leading)
+                                    .padding(.trailing)
+                                    .padding(.bottom, 40)
+                                    .padding(.top, 20)
+                                
+                                
+                                
+                                switch formattedLucNumber{
+                                case _ where calculatedTotalBilledkortKulhydrat > 0.5:
+                                    Text("\(formattedLucNumber) Gram")
+                                        .bold()
+                                        .font(.system(size: 20))
+                                        .padding(.leading, 0)
+                                        .padding(.bottom, 50)
+                                        .padding(.top, -10)
+                                default:
+                                    Text("0 Gram")
+                                        .bold()
+                                        .font(.system(size: 20))
+                                        .padding(.leading, 0)
+                                        .padding(.bottom, 50)
+                                        .padding(.top, -10)
+                                    
+                                }
+
+                            }
+                            .padding(.bottom, 60)
+                            .padding(.top, 30)
+                            .padding(.trailing, 20)
+                           
+                        }
+                        
+                    }
+                    .padding(.top, -30)
+                    .padding(.bottom, 50)
+                    
+                    
+                    ZStack{
+                        
+                        Rectangle()
+                            .frame(width: 330, height: 330)
+                            .cornerRadius(10)
+                            .foregroundColor(.white.opacity(0.8))
+                        
+                        if let imageData = flashcard.imageData, let uiImage = UIImage(data: imageData) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 329, height: 329)
+                                .cornerRadius(10)
+                               // .padding(.top, -80)
+                               // .padding(.bottom, 320)
+                        } else {
+                            // Show a placeholder if no image exists
+                            Image("placeholder") // Make sure to have a placeholder image in your assets
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 329, height: 329)
+                                .cornerRadius(10)
+                                //.padding(.top, -80)
+                                //.padding(.bottom, 320)
+                            
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.black, lineWidth: 1)
+                                .frame(width: 330, height: 330)
+                            
+                            
+                        }
+                        
+                        
+                    }
+
+                    .padding(.top, -80)
+                    .padding(.bottom, 320)
+                    
+                }
+                .padding(.top, 20)
+
+            }
+            .navigationBarBackButtonHidden(true)
+            .toolbar{
+                ToolbarItem(placement: .topBarLeading){
+                    Button{
+                        dismiss()
+                    } label: {
+                        HStack{
+                            Image(systemName: "arrow.backward")
+                        }
+                    }
+                }
+            }
+
+        
+       /* ZStack{
             
-            //Color("BlåTilKnapper").opacity(0.3)
-            //  .ignoresSafeArea()
+            Color("GrønBaggrund")
+                .ignoresSafeArea()
             
             VStack{
                 
                 ZStack{
                     Rectangle()
                         .frame(width: 240, height: 50)
-                        .foregroundColor(Color("BlåTilKnapper").opacity(0.8))
+                        .foregroundColor(Color("GrønTekst").opacity(0.6))
                         .cornerRadius(20)
                         .padding()
                     
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color("BlåTilKnapper"), lineWidth: 2)
+                        .stroke(Color.black, lineWidth: 1)
                         .frame(width: 240, height: 50)
                         .padding()
                     
@@ -108,19 +293,19 @@ struct FlashcardDetailView: View {
                         .font(.title3)
                 }
                 .padding(.top, 200)
-                .padding(.bottom, -50)
+                .padding(.bottom, -2)
                 
                 
                 
                 ZStack{
                     Rectangle()
                         .frame(width: 330, height: 140)
-                        .foregroundColor(Color("BlåTilKnapper").opacity(0.6))
+                        .foregroundColor(Color("GrønTekst").opacity(0.6))
                         .cornerRadius(20)
                         .padding(.bottom, 40)
                     
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color("BlåTilKnapper"), lineWidth: 2)
+                        .stroke(Color.black, lineWidth: 1)
                         .frame(width: 330, height: 140)
                         .padding(.bottom, 40)
                     
@@ -170,7 +355,8 @@ struct FlashcardDetailView: View {
                             
                         }
                         .padding(.bottom, 50)
-                        .padding(.top, 60)
+                        .padding(.top, 10)
+                        .padding(.top, 20)
                         
                         
                         VStack{
@@ -180,7 +366,7 @@ struct FlashcardDetailView: View {
                                 .padding(.leading)
                                 .padding(.trailing)
                                 .padding(.bottom, 40)
-                                .padding(.top, 30)
+                                .padding(.top, 20)
                             
                             switch formattedLucNumber{
                             case _ where calculatedTotalBilledkortKulhydrat > 0.5:
@@ -212,7 +398,7 @@ struct FlashcardDetailView: View {
                 
                 
                 .padding(.top, -30)
-                //.padding(.bottom, 50)
+                .padding(.bottom, 50)
                 
                 
                 ZStack{
@@ -226,22 +412,22 @@ struct FlashcardDetailView: View {
                         Image(uiImage: uiImage)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 325, height: 325)
+                            .frame(width: 329, height: 329)
                             .cornerRadius(10)
-                            .padding(.top, -80)
-                            .padding(.bottom, 320)
+                           // .padding(.top, -80)
+                           // .padding(.bottom, 320)
                     } else {
                         // Show a placeholder if no image exists
                         Image("placeholder") // Make sure to have a placeholder image in your assets
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 325, height: 325)
+                            .frame(width: 329, height: 329)
                             .cornerRadius(10)
-                            .padding(.top, -80)
-                            .padding(.bottom, 320)
+                            //.padding(.top, -80)
+                            //.padding(.bottom, 320)
                         
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color("BlåTilKnapper"), lineWidth: 4)
+                            .stroke(Color.black, lineWidth: 1)
                             .frame(width: 330, height: 330)
                         
                         
@@ -249,7 +435,10 @@ struct FlashcardDetailView: View {
                     
                     
                 }
+                .padding(.top, -80)
+                .padding(.bottom, 320)
             }
+            .padding(.top, 20)
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -263,7 +452,7 @@ struct FlashcardDetailView: View {
                                 
                             )
                         ) {
-                            Text("Edit")
+                            Text("Rediger")
                         }
                     }
                 }
@@ -282,7 +471,7 @@ struct FlashcardDetailView: View {
             
             
             
-        }
+        }*/
         
     }
 }

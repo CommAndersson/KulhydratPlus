@@ -15,10 +15,16 @@ struct KategoriSide: View {
            self.categories = categories
        }
 
+    @Environment(\.dismiss) private var dismiss
    
     
     
     var body: some View {
+        ZStack{
+            Color("GrønBaggrund")
+                .ignoresSafeArea()
+                .opacity(0.4)
+
         ScrollView {
             VStack(spacing: 20) {
                 ForEach(categories.indices, id: \.self) { index in
@@ -26,14 +32,14 @@ struct KategoriSide: View {
                     NavigationLink(destination: category.destinationView) {
                         Text(category.title)
                             .frame(width: 300, height: 50)
-                            .background(Color("BlåTilKnapper"))
+                            .background(Color("GrønEmneBaggrund"))
                             .foregroundColor(.black)
                             .font(.system(size: 20))
                             .cornerRadius(10)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color("RoyalBlue"), lineWidth: 4)
-                            )
+                        /*.overlay(
+                         RoundedRectangle(cornerRadius: 10)
+                         .stroke(Color("RoyalBlue"), lineWidth: 4)
+                         ) */
                         
                     }
                     
@@ -42,6 +48,19 @@ struct KategoriSide: View {
             .padding()
         }
         .navigationTitle("Kategorier")
-        
+    }
+        .navigationBarBackButtonHidden(true)
+        .toolbar{
+            ToolbarItem(placement: .topBarLeading){
+                Button{
+                    dismiss()
+                } label: {
+                    HStack{
+                        Image(systemName: "arrow.backward")
+                    }
+                }
+            }
+        }
+
     }
 }

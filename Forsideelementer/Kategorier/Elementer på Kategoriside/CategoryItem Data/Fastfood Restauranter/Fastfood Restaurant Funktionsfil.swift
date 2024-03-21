@@ -47,6 +47,7 @@ struct McDonaldsData: FastFoodItem {
     var Navn: String
     var carbPer100g: Double
     var Billede: String
+    var Enhed: String
     
     // Other properties and methods as needed
     

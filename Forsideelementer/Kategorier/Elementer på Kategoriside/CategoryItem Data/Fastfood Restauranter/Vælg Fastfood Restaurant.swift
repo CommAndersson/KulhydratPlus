@@ -10,6 +10,8 @@ import SwiftUI
 struct VælgFastFoodRestaurant: View {
     let restaurants: [FastFoodRestaurant]
 
+    @Environment(\.dismiss) private var dismiss
+    
     /*
     var body: some View {
         List {
@@ -22,6 +24,9 @@ struct VælgFastFoodRestaurant: View {
     }*/
     
     var body: some View {
+        ZStack{
+            Color("GrønBaggrund")
+                .ignoresSafeArea()
         ScrollView {
             VStack(spacing: 20) {
                 ForEach(restaurants.indices, id: \.self) { index in
@@ -29,14 +34,14 @@ struct VælgFastFoodRestaurant: View {
                     NavigationLink(destination: restaurants.destinationView) {
                         Text(restaurants.title)
                             .frame(width: 300, height: 50)
-                            .background(Color("BlåTilKnapper"))
+                            .background(Color("GrønEmneBaggrund"))
                             .foregroundColor(.black)
                             .font(.system(size: 20))
                             .cornerRadius(10)
-                            .overlay(
+                           /* .overlay(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color("RoyalBlue"), lineWidth: 4)
-                            )
+                                //.stroke(Color("RoyalBlue"), lineWidth: 4)
+                            )*/
                         
                     }
                     
@@ -45,7 +50,19 @@ struct VælgFastFoodRestaurant: View {
             .padding()
         }
         .navigationTitle("Vælg Restaurant")
-        
+    }
+        .navigationBarBackButtonHidden(true)
+        .toolbar{
+            ToolbarItem(placement: .topBarLeading){
+                Button{
+                    dismiss()
+                } label: {
+                    HStack{
+                        Image(systemName: "arrow.backward")
+                    }
+                }
+            }
+        }
     }
     
 }

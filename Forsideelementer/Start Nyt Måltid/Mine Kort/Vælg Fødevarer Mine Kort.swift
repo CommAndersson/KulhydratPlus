@@ -17,6 +17,10 @@ struct VælgFødevarerMineKort: View {
     @Binding var selectedDeck: Deck?
     @ObservedObject var deck: Deck
     
+    let columns: [GridItem] = [
+        GridItem(.flexible(), spacing: -20),
+        GridItem(.flexible(), spacing: 15)
+    ]
     
     @State private var newNavn = ""
     @State private var newKulhydrat = ""
@@ -24,14 +28,14 @@ struct VælgFødevarerMineKort: View {
     @State private var newMængde = ""
     
     var body: some View {
-        Text("VælgFødevarerMineKort")
+        //Text("Vælg Fødevare")
         
 
-            List {
+        ScrollView {
                 
                 
                 
-                Section(header: Text("Mine Billedkort")) {
+            LazyVGrid(columns: columns, spacing: 30) {
                     ForEach(deck.cards) { card in
                         NavigationLink(
                             destination: IndtastMængdeMineKort(
@@ -41,35 +45,33 @@ struct VælgFødevarerMineKort: View {
                                 deck: deck
                             ).environmentObject(mealViewModel),
                             label: {
-                                VStack(alignment: .leading) {
-                                    Text("Navn: \(card.navn)")
-                                    //Text("Kulhydrat: \(card.navn)")
-                                    //Text("Måleenhed: \(card.måleenhed)")
+                                VStack {
+                                    Text(card.navn)
+                                        .foregroundColor(.black)
+                                        .font(.system(size: 20))
+                                        .padding(.top, 35)
+                                    Image("PlaceholderImage")
+                                        .resizable()
+                                        .frame(width: 90, height: 90)
+                                        .cornerRadius(10)
+                                        .padding(.bottom, 40)
                                 }
                                 
                             }
                             
                         )
-                        .listStyle(.insetGrouped)
-                        //.padding(.bottom, 20)
-                        .listRowInsets(.init(top: 0, leading: 30, bottom: 0, trailing: 60))
-                        //.background(.white)
-                        .scrollContentBackground(.hidden)
-                        .environment(\.defaultMinListRowHeight, 50)
-                        .environment(\.defaultMinListHeaderHeight, 10)
-                        //.multilineTextAlignment(.center)
+                        .frame(width: 150, height: 150)
+                        .background(Color("GrønEmneBaggrund"))
+                        .cornerRadius(10)
+                        .padding(.trailing, 20)
+                        
                     }
                     .onDelete { indexSet in
                         deck.removeCard(at: indexSet.first!)
                     }
-                    .foregroundColor(.black)
-                    .listRowInsets(.init(top: 0, leading: 30, bottom: 0, trailing: 60))
-                    .listRowSeparatorTint(.black)
-                    .listRowBackground(Color("BlåTilKnapper"))
-                    .listSectionSeparatorTint(.black)
-                    .headerProminence(.increased)
+                    .padding(.leading, 20)
                 }
-        
+            .navigationTitle(Text("Vælg fødevarer fra \(deck.name)"))
             }
            
         

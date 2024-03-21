@@ -35,9 +35,9 @@ struct ContentView: View {
                 
                 VStack{
                     Text("Kulhydrat+")
-                        .font(.system(size: 40, weight: .bold))
+                        .font(.system(size: 60, weight: .bold))
                         .padding()
-                        .foregroundColor(Color("BlåTilKnapper"))
+                        .foregroundColor(Color("GrønTekst"))
                         .padding(.top, 60)
                         .padding(.bottom, 10)
                         .textFieldStyle(.plain)
@@ -185,7 +185,7 @@ struct ContentView: View {
                         }
                     })
                     .frame(width: 300, height: 50)
-                    .background(Color("BlåTilKnapper"))
+                    .background(Color("GrønEmneBaggrund"))
                     .cornerRadius(10)
                     .padding(.bottom, 20)
                     .contentShape(Rectangle())
@@ -206,7 +206,7 @@ struct ContentView: View {
                         }
                     }
                     .frame(width: 300, height: 50)
-                    .background(Color("BlåTilKnapper"))
+                    .background(Color("GrønEmneBaggrund"))
                     .cornerRadius(10)
                     .padding(.bottom, 20)
                     .contentShape(Rectangle())
@@ -226,7 +226,7 @@ struct ContentView: View {
                         }
                     })
                     .frame(width: 300, height: 50)
-                    .background(Color("BlåTilKnapper"))
+                    .background(Color("GrønEmneBaggrund"))
                     .cornerRadius(10)
                     .padding(.bottom, 20)
                     .contentShape(Rectangle())

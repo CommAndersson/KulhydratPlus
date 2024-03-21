@@ -32,18 +32,18 @@ struct KategoriSideNytMåltidKulhydratPlus: View {
                 ZStack {
                     Rectangle()
                         .frame(width: 350, height: 55)
-                        .foregroundColor(Color("BlåTilKnapper").opacity(0.6))
-                        .cornerRadius(20)
+                        .foregroundColor(Color("GrønEmneBaggrund").opacity(0.6))
+                        .cornerRadius(10)
                         .padding(.bottom, 10)
                         .padding(.top, -30)
                     
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color("BlåTilKnapper"), lineWidth: 2)
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.black, lineWidth: 2)
                         .frame(width: 350, height: 55)
                         .padding(.bottom, 10)
                         .padding(.top, -30)
                     
-                    Text("Kategorier 2.0:")
+                    Text("Kategorier:")
                         .bold()
                         .foregroundColor(.black)
                         .font(.system(size: 30))
@@ -57,14 +57,14 @@ struct KategoriSideNytMåltidKulhydratPlus: View {
                             NavigationLink(destination: category.destinationViewNytMåltid) {
                                 Text(category.title)
                                     .frame(width: 300, height: 50)
-                                    .background(Color("BlåTilKnapper"))
+                                    .background(Color("GrønEmneBaggrund"))
                                     .foregroundColor(.black)
                                     .font(.system(size: 20))
                                     .cornerRadius(10)
-                                    .overlay(
+                                    /*.overlay(
                                         RoundedRectangle(cornerRadius: 10)
                                             .stroke(Color("RoyalBlue"), lineWidth: 4)
-                                    )
+                                    )*/
                             }
                         }
                     }

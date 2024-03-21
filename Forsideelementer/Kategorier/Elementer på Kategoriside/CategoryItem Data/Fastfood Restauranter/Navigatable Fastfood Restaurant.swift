@@ -28,6 +28,9 @@ struct FastFoodRestaurantNavigationView: View {
 
     
     var body: some View {
+        ZStack{
+            Color("GrønBaggrund")
+                .ignoresSafeArea()
         ScrollView {
             LazyVGrid(columns: columns, spacing: 30) {
                 ForEach(fastFoodItems, id: \.id) { item in
@@ -45,13 +48,26 @@ struct FastFoodRestaurantNavigationView: View {
                         }
                     }
                     .frame(width: 150, height: 150)
-                    .background(Color("BlåTilKnapper"))
+                    .background(Color("GrønEmneBaggrund"))
                     .cornerRadius(10)
                     .padding(.trailing, 20)
                 }
                 .padding(.leading, 20)
             }
-            .navigationTitle("Vælg Fødevare")
+            .navigationTitle(navigatableCategory.title)
+        }
+    }
+        .navigationBarBackButtonHidden(true)
+        .toolbar{
+            ToolbarItem(placement: .topBarLeading){
+                Button{
+                    dismiss()
+                } label: {
+                    HStack{
+                        Image(systemName: "arrow.backward")
+                    }
+                }
+            }
         }
         
     }

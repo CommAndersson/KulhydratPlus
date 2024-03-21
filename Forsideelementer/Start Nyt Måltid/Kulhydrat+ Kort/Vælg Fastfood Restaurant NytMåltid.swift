@@ -17,14 +17,14 @@ struct VælgFastFoodRestaurantNytMåltid: View {
                     NavigationLink(destination: restaurant.destinationViewNytMåltid) {
                             Text(restaurant.title)
                             .frame(width: 300, height: 50)
-                            .background(Color("BlåTilKnapper"))
+                            .background(Color("GrønEmneBaggrund"))
                             .foregroundColor(.black)
                             .font(.system(size: 20))
                             .cornerRadius(10)
-                            .overlay(
+                            /*.overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color("RoyalBlue"), lineWidth: 4)
-                            )
+                            ) */
                     }
                 }
             }

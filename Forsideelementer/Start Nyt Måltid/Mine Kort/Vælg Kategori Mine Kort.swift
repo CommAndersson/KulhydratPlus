@@ -40,7 +40,7 @@ struct FlashcardPicker: View {
                             .foregroundColor(.black)
                             .listRowInsets(.init(top: 0, leading: 30, bottom: 0, trailing: 60))
                             .listRowSeparatorTint(.black)
-                            .listRowBackground(Color("BlåTilKnapper"))
+                            .listRowBackground(Color("GrønEmneBaggrund"))
                             .listSectionSeparatorTint(.black)
                             .headerProminence(.increased)
                             

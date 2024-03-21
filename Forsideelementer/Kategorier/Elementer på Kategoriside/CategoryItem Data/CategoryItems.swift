@@ -22,6 +22,7 @@ protocol CategoryItem: Identifiable {
     var Navn: String { get }
     var carbPer100g: Double { get }
     var Billede: String { get }
+    var Enhed: String { get }
     func destinationView() -> AnyView
 }
 
@@ -38,6 +39,7 @@ struct FrugtData: CategoryItem {
     var Navn: String
     var carbPer100g: Double
     var Billede: String
+    var Enhed: String
     
     // Other properties and methods as needed
     
@@ -48,6 +50,7 @@ struct Bælgfrugt: CategoryItem {
     var Navn: String
     var carbPer100g: Double
     var Billede: String
+    var Enhed: String
     
     // Other properties and methods as needed
 }
@@ -57,6 +60,7 @@ struct FastFoodData: CategoryItem {
     var Navn: String
     var carbPer100g: Double
     var Billede: String
+    var Enhed: String
     
     // Other properties and methods as needed
 }

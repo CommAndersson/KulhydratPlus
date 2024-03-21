@@ -12,7 +12,7 @@ import SwiftUI
 struct CategoryItemView: View {
     var categoryItem: any CategoryItem
     
-
+    @Environment(\.dismiss) private var dismiss
     
     @State private var Gram = 0
    
@@ -26,7 +26,7 @@ struct CategoryItemView: View {
        
        ZStack{
            
-           Color("BlåTilKnapper").opacity(0.3)
+           Color("GrønBaggrund")
                .ignoresSafeArea()
            
            VStack{
@@ -34,12 +34,12 @@ struct CategoryItemView: View {
                ZStack{
                    Rectangle()
                    .frame(width: 240, height: 50)
-                   .foregroundColor(Color("BlåTilKnapper").opacity(0.6))
-                   .cornerRadius(20)
+                   .foregroundColor(Color("GrønTekst").opacity(0.6))
+                   .cornerRadius(10)
                    .padding()
                    
-                   RoundedRectangle(cornerRadius: 20)
-                       .stroke(Color("BlåTilKnapper"), lineWidth: 2)
+                   RoundedRectangle(cornerRadius: 10)
+                       .stroke(Color.black, lineWidth: 1)
                        .frame(width: 240, height: 50)
                        .padding()
                    
@@ -55,12 +55,12 @@ struct CategoryItemView: View {
                ZStack{
                    Rectangle()
                    .frame(width: 330, height: 140)
-                   .foregroundColor(Color("BlåTilKnapper").opacity(0.6))
-                   .cornerRadius(20)
+                   .foregroundColor(Color("GrønTekst").opacity(0.6))
+                   .cornerRadius(10)
                    .padding(.bottom, 40)
                    
-                   RoundedRectangle(cornerRadius: 20)
-                       .stroke(Color("BlåTilKnapper"), lineWidth: 2)
+                   RoundedRectangle(cornerRadius: 10)
+                       .stroke(Color.black, lineWidth: 1)
                        .frame(width: 330, height: 140)
                        .padding(.bottom, 40)
                    
@@ -68,7 +68,7 @@ struct CategoryItemView: View {
                    HStack{
                        
                        VStack{
-                       Text("Vægt:")
+                           Text(categoryItem.Enhed)
                            .bold()
                            .padding(.leading, -10)
                            .font(.system(size: 24))
@@ -94,7 +94,7 @@ struct CategoryItemView: View {
                                .padding(.trailing, -10)
                            
                            
-                           TextField("Gram", value: $Gram, formatter: Formatter.lucNumberFormatBulgur)
+                           TextField(categoryItem.Enhed, value: $Gram, formatter: Formatter.lucNumberFormatBulgur)
                                .font(.title3)
                                .frame(width: 120, height: 80)
                                .clipped()
@@ -158,10 +158,10 @@ struct CategoryItemView: View {
                    Image(categoryItem.Billede)
                        .resizable()
                        .cornerRadius(10)
-                       .frame(width: 325, height: 325)
+                       .frame(width: 329, height: 329)
                    
                    RoundedRectangle(cornerRadius: 10)
-                       .stroke(Color("BlåTilKnapper"), lineWidth: 4)
+                       .stroke(Color.black, lineWidth: 1)
                        .frame(width: 330, height: 330)
                    
                
@@ -170,7 +170,20 @@ struct CategoryItemView: View {
                .padding(.bottom, 320)
                
            }
+           .padding(.top, 20)
 
+       }
+       .navigationBarBackButtonHidden(true)
+       .toolbar{
+           ToolbarItem(placement: .topBarLeading){
+               Button{
+                   dismiss()
+               } label: {
+                   HStack{
+                       Image(systemName: "arrow.backward")
+                   }
+               }
+           }
        }
        
        

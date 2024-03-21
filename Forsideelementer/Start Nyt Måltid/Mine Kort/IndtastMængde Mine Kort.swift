@@ -92,12 +92,12 @@ struct IndtastMængdeMineKort: View {
                 ZStack{
                     Rectangle()
                         .frame(width: 240, height: 50)
-                        .foregroundColor(Color("BlåTilKnapper").opacity(0.8))
+                        .foregroundColor(Color("GrønEmneBaggrund").opacity(0.8))
                         .cornerRadius(20)
                         .padding()
                     
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color("BlåTilKnapper"), lineWidth: 2)
+                        .stroke(Color.black, lineWidth: 1)
                         .frame(width: 240, height: 50)
                         .padding()
                     
@@ -113,12 +113,12 @@ struct IndtastMængdeMineKort: View {
                 ZStack{
                     Rectangle()
                         .frame(width: 330, height: 140)
-                        .foregroundColor(Color("BlåTilKnapper").opacity(0.6))
+                        .foregroundColor(Color("GrønEmneBaggrund").opacity(0.6))
                         .cornerRadius(20)
                         .padding(.bottom, 40)
                     
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color("BlåTilKnapper"), lineWidth: 2)
+                        .stroke(Color.black, lineWidth: 1)
                         .frame(width: 330, height: 140)
                         .padding(.bottom, 40)
                     
@@ -223,10 +223,10 @@ struct IndtastMængdeMineKort: View {
                     Image("Pære")
                         .resizable()
                         .cornerRadius(10)
-                        .frame(width: 325, height: 325)
+                        .frame(width: 329, height: 329)
                     
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color("BlåTilKnapper"), lineWidth: 4)
+                        .stroke(Color.black, lineWidth: 1)
                         .frame(width: 330, height: 330)
                     
                     

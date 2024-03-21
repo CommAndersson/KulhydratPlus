@@ -83,187 +83,193 @@ struct StartNytMåltid: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        NavigationView {
-            VStack {
-                
+        
+            NavigationView {
                 ZStack{
+                    Color("GrønBaggrund")
+                        .ignoresSafeArea()
+                        .opacity(0.4)
+                VStack {
                     
-                    Rectangle()
-                        .frame(width: 350, height: 150)
-                        .foregroundColor(Color("BlåTilKnapper").opacity(0.6))
-                        .cornerRadius(20)
-                        .padding(.bottom, 10)
-                        .padding(.top, -30)
-                    
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color("BlåTilKnapper"), lineWidth: 2)
-                        .frame(width: 350, height: 150)
-                        .padding(.bottom, 10)
-                        .padding(.top, -30)
-                    
-                    Rectangle()
-                        .frame(width: 150, height: 40)
-                        .foregroundColor(.white.opacity(0.9))
-                        .cornerRadius(20)
-                        .padding(.bottom, 10)
-                        .padding(.top, 42)
-                    
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color("BlåTilKnapper"), lineWidth: 2)
-                        .frame(width: 150, height: 40)
-                        .padding(.bottom, 10)
-                        .padding(.top, 42)
-                    
-                    
-                    VStack{
-                        Text("Kulhydrater i Måltid:")
-                            .bold()
-                        // .padding(.bottom)
-                        //.padding(.top, 40)
-                            .foregroundColor(.black)
-                            .font(.system(size: 30))
-                            .padding(.bottom, 30)
+                    ZStack{
                         
-                        switch mealViewModel.totalCarbs {
-                        case _ where mealViewModel.totalCarbs > 0 :
-                            Text("\(mealViewModel.totalCarbs, specifier: "%.0f")g")
-                                .font(.system(size: 22))
+                        Rectangle()
+                            .frame(width: 350, height: 150)
+                            .foregroundColor(Color("GrønEmneBaggrund").opacity(0.6))
+                            .cornerRadius(20)
+                            .padding(.bottom, 10)
+                            .padding(.top, -30)
+                        
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.black, lineWidth: 1)
+                            .frame(width: 350, height: 150)
+                            .padding(.bottom, 10)
+                            .padding(.top, -30)
+                        
+                        Rectangle()
+                            .frame(width: 150, height: 40)
+                            .foregroundColor(.white.opacity(0.7))
+                            .cornerRadius(20)
+                            .padding(.bottom, 10)
+                            .padding(.top, 42)
+                        
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.black, lineWidth: 1)
+                            .frame(width: 150, height: 40)
+                            .padding(.bottom, 10)
+                            .padding(.top, 42)
+                        
+                        
+                        VStack{
+                            Text("Kulhydrater i Måltid:")
                                 .bold()
-                            //.padding(.top, -30)
-                                .padding(.bottom, 10)
-                        default:
-                            Text("0g")
-                                .font(.system(size: 22))
-                                .bold()
-                            //.padding(.top, -30)
-                                .padding(.bottom, 10)
+                            // .padding(.bottom)
+                            //.padding(.top, 40)
+                                .foregroundColor(.black)
+                                .font(.system(size: 30))
+                                .padding(.bottom, 30)
+                            
+                            switch mealViewModel.totalCarbs {
+                            case _ where mealViewModel.totalCarbs > 0 :
+                                Text("\(mealViewModel.totalCarbs, specifier: "%.0f")g")
+                                    .font(.system(size: 22))
+                                    .bold()
+                                //.padding(.top, -30)
+                                    .padding(.bottom, 10)
+                            default:
+                                Text("0g")
+                                    .font(.system(size: 22))
+                                    .bold()
+                                //.padding(.top, -30)
+                                    .padding(.bottom, 10)
+                            }
+                        }
+                        .padding(.top, -30)
+                    }
+                    .padding(.top, 40)
+                    .padding(.bottom, 50)
+                    
+                    
+                    
+                    // Button to add food, which shows VælgOverblik
+                    ZStack{
+                        Button("Tilføj Fødevare") {
+                            showingVælgOverblik = true
+                            
+                        }
+                        .foregroundColor(.black)
+                        .font(.system(size: 20))
+                        .padding(.bottom, 2)
+                        .frame(width: 300, height: 50)
+                        
+                        Rectangle()
+                            .frame(width: 300, height: 50)
+                            .foregroundColor(.black.opacity(0))
+                        
+                    }
+                    .frame(width: 350, height: 50)
+                    .background(Color("GrønEmneBaggrund"))
+                    .cornerRadius(10)
+                    .padding(.bottom, 30)
+                    .contentShape(Rectangle())
+                    
+                    // Handling sheet presentation for VælgOverblik
+                    .sheet(isPresented: $showingVælgOverblik) {
+                        VælgOverblik(flashcardManager: flashcardManager,
+                                     selectedDeck: $selectedDeck,
+                                     deck: deck,
+                                     categories: [/* Your categories here */])
+                        .environmentObject(mealViewModel)
+                    }
+                    
+                    // Listening to changes for navigating back
+                    .onChange(of: mealViewModel.shouldNavigateBackToStartNytMåltid) { newValue in
+                        if newValue {
+                            showingVælgOverblik = false // This will dismiss the sheet
+                            mealViewModel.shouldNavigateBackToStartNytMåltid = false // Reset the flag
                         }
                     }
-                    .padding(.top, -30)
-                }
-                .padding(.top, 40)
-                .padding(.bottom, 50)
-                
-                
-                
-                // Button to add food, which shows VælgOverblik
-                ZStack{
-                    Button("Tilføj Fødevare") {
-                        showingVælgOverblik = true
+                    
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.black, lineWidth: 1)
+                            .frame(width: 350, height: 400)
+                            .padding(.bottom, 10)
+                            .padding(.top, -30)
                         
-                    }
-                    .foregroundColor(.black)
-                    .font(.system(size: 20))
-                    .padding(.bottom, 2)
-                    .frame(width: 300, height: 50)
-                    
-                    Rectangle()
-                        .frame(width: 300, height: 50)
-                        .foregroundColor(.black.opacity(0))
-                    
-                }
-                .frame(width: 350, height: 50)
-                .background(Color("BlåTilKnapper"))
-                .cornerRadius(10)
-                .padding(.bottom, 30)
-                .contentShape(Rectangle())
-                
-                // Handling sheet presentation for VælgOverblik
-                .sheet(isPresented: $showingVælgOverblik) {
-                    VælgOverblik(flashcardManager: flashcardManager,
-                                 selectedDeck: $selectedDeck,
-                                 deck: deck,
-                                 categories: [/* Your categories here */])
-                    .environmentObject(mealViewModel)
-                }
-                
-                // Listening to changes for navigating back
-                .onChange(of: mealViewModel.shouldNavigateBackToStartNytMåltid) { newValue in
-                    if newValue {
-                        showingVælgOverblik = false // This will dismiss the sheet
-                        mealViewModel.shouldNavigateBackToStartNytMåltid = false // Reset the flag
-                    }
-                }
-                
-                ZStack{
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color("BlåTilKnapper"), lineWidth: 2)
-                        .frame(width: 350, height: 400)
-                        .padding(.bottom, 10)
-                        .padding(.top, -30)
-                    
-                    
-                    VStack{
                         
-                        ZStack{
-                            List {
+                        VStack{
+                            
+                            ZStack{
+                                List {
+                                    
+                                    ForEach(mealViewModel.mealItems) { item in
+                                        HStack {
+                                            Text(item.flashcard.name) // Display the name of the flashcard
+                                            Spacer()
+                                            // Display the calculated carbs for each item, formatted to 2 decimal places
+                                            
+                                            Text("\(item.calculatedCarbs, specifier: "%.0f")g Kulhydrat")
+                                        }
+                                    }
+                                    .onDelete(perform: deleteItems) // Enables swipe to delete functionality
+                                    .listRowInsets(.init(top: 0, leading: 30, bottom: 0, trailing: 60))
+                                    .foregroundColor(.black)
+                                    .listRowSeparatorTint(.black)
+                                    .listRowBackground(Color("RoyalBlue"))
+                                    .listSectionSeparatorTint(.black)
+                                    .headerProminence(.increased)
+                                    
+                                    
+                                }
+                                .frame(height: 380)
+                                .clipped()
+                                .listStyle(.insetGrouped)
+                                .scrollContentBackground(.hidden)
+                                .padding(.horizontal, 20)
+                                .padding(.top, -10)
                                 
-                                ForEach(mealViewModel.mealItems) { item in
-                                    HStack {
-                                        Text(item.flashcard.name) // Display the name of the flashcard
-                                        Spacer()
-                                        // Display the calculated carbs for each item, formatted to 2 decimal places
-                                        
-                                        Text("\(item.calculatedCarbs, specifier: "%.0f")g Kulhydrat")
+                                Rectangle()
+                                    .fill(Color("GrønBaggrund") .opacity(0))
+                                    .frame(width: 340, height: 30)
+                                    .padding(.bottom, 390)
+                                    .cornerRadius(10)
+                                
+                                Text("Fødevarer i Måltid:")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.leading, 40)
+                                    .bold()
+                                    .padding(.bottom, -20)
+                                    .padding(.top, -205)
+                                
+                                
+                            }
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            .toolbar{
+                                ToolbarItem(placement: .topBarTrailing){
+                                    EditButton()
+                                }
+                                ToolbarItem(placement: .navigationBarLeading) {
+                                    Button(action: { dismiss() }) {
+                                        Image(systemName: "arrow.backward")
                                     }
                                 }
-                                .onDelete(perform: deleteItems) // Enables swipe to delete functionality
-                                .listRowInsets(.init(top: 0, leading: 30, bottom: 0, trailing: 60))
-                                .foregroundColor(.black)
-                                .listRowSeparatorTint(.black)
-                                .listRowBackground(Color("RoyalBlue"))
-                                .listSectionSeparatorTint(.black)
-                                .headerProminence(.increased)
-                                
-                                
-                            }
-                            .frame(height: 380)
-                            .clipped()
-                            .listStyle(.insetGrouped)
-                            .scrollContentBackground(.hidden)
-                            .padding(.horizontal, 20)
-                            .padding(.top, -10)
-                            
-                            Rectangle()
-                                .fill(Color.white)
-                                .frame(width: 340, height: 30)
-                                .padding(.bottom, 390)
-                                .cornerRadius(10)
-                            
-                            Text("Fødevarer i Måltid:")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.leading, 40)
-                                .bold()
-                                .padding(.bottom, -20)
-                                .padding(.top, -205)
-                            
-                            
-                        }
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        .toolbar{
-                            ToolbarItem(placement: .topBarTrailing){
-                                EditButton()
-                            }
-                            ToolbarItem(placement: .navigationBarLeading) {
-                                Button(action: { dismiss() }) {
-                                    Image(systemName: "arrow.backward")
-                                }
                             }
                         }
                     }
+                    
                 }
                 
             }
-            
-            
         }
         .navigationBarBackButtonHidden(true)
+    
         
     }
     
