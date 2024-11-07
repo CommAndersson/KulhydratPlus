@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23507" systemVersion="23G93" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="BrugerdefineredeKort" representedClassName="BrugerdefineredeKort" syncable="YES" codeGenerationType="class">
+        <attribute name="aktivMaengde" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="deckId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="kategori" optional="YES" attributeType="String"/>
+        <attribute name="kulhydrat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="maengde" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="maaleenhed" optional="YES" attributeType="String"/>
+        <attribute name="navn" optional="YES" attributeType="String"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="kategorierRelation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Categories" inverseName="brugerdefineredeKort" inverseEntity="Categories"/>
+    </entity>
+    <entity name="Categories" representedClassName=".Categories" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="navn" optional="YES" attributeType="String"/>
+        <attribute name="oprettelsesdato" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="brugerdefineredeKort" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BrugerdefineredeKort" inverseName="kategorierRelation" inverseEntity="BrugerdefineredeKort"/>
+    </entity>
+    <entity name="FavoriteCategoryItemID" representedClassName="FavoriteCategoryItemID" syncable="YES" codeGenerationType="class">
+        <attribute name="itemId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="SavedMeal" representedClassName="SavedMeal" syncable="YES">
+        <attribute name="createdDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="totalCarbs" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="mealItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SavedMealItem" inverseName="meal" inverseEntity="SavedMealItem"/>
+    </entity>
+    <entity name="SavedMealItem" representedClassName="SavedMealItem" syncable="YES">
+        <attribute name="amount" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="calculatedCarbs" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="meal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SavedMeal" inverseName="mealItems" inverseEntity="SavedMeal"/>
+    </entity>
+</model>

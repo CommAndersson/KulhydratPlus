@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key>
+    <string>com.Sigurd-Andersson.Kulhydrat</string>
+
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>com.googleusercontent.apps.858635899500-lnki64c1hg1v7dk1jf5jc6jq9tdghnoo</string>
+                <string>fb3403701363093875</string>
+            </array>
+        </dict>
+    </array>
+
+    <key>GIDClientID</key>
+    <string>858635899500-lnki64c1hg1v7dk1jf5jc6jq9tdghnoo.apps.googleusercontent.com</string>
+
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>googlegmail</string>
+        <string>googleauth</string>
+        <string>googleauth2</string>
+        <string>fbapi</string>
+        <string>fb-messenger-share-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
+
+    <key>FacebookAppID</key>
+    <string>3403701363093875</string>
+    <key>FacebookClientToken</key>
+    <string>90f56d859cbfc777b45435f5c4c793b2</string>
+    <key>FacebookDisplayName</key>
+    <string>Kulhydrat+</string>
+
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+        <key>NSAllowsLocalNetworking</key>
+        <true/>
+    </dict>
+
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
+
+    <key>NSUserTrackingUsageDescription</key>
+    <string>This allows us to provide a better sign-in experience.</string>
+
+    <key>NSContactsUsageDescription</key>
+    <string>We use this to help you sign in with your Google account.</string>
+
+    <key>UIUserInterfaceStyle</key>
+    <string>Light</string>
+</dict>
+</plist>
